@@ -1,0 +1,11 @@
+{
+    "header_home" : "Home",
+    "header_map" : "Map",
+    "header_dashboard" : "Dashboard",
+    "header_subjects" : "Subjects",
+    "header_about" : "About",
+    "header_contactUs" : "Contact us",
+
+    "footer_links" : "Links",
+    "footer_language" : "Languages"
+}

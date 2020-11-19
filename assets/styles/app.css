@@ -1,0 +1,369 @@
+.bg-llanddev {
+    background-color: #3e1d02!important;
+    height: 80px;
+}
+
+.nav-llanddev a {
+    color: white;
+    margin-left: 25px;
+}
+
+.navbar-brand {
+    background-color: white;
+    height: 80px;
+    padding-top: 20px;
+    margin-left: 0px!important;
+}
+
+.nav-llanddev img {
+    height: 50px;
+}
+
+.navbar-collapse {
+    margin-left: 50px;
+}
+
+.llanddev-header-right a {
+    margin-left: 0px;
+}
+
+.llanddev-header-right {
+    margin-left: auto;
+    background-color: #00000000;
+    color: white;
+    border: none;
+}
+
+.llanddev-header-right option {
+    color: black;
+}
+
+.history {
+    background-color: black;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    margin-bottom: 8px;
+}
+
+.history h1 {
+    color: white;
+    font-size: 21px;
+    margin-bottom: 0px;
+}
+
+.history a, .history h4, .inline {
+    display: inline;
+}
+
+.history a:hover {
+    text-decoration: none;
+}
+
+.history h4 {
+    color: white;
+    margin-right: 5px;
+    font-size: 12px;
+}
+
+.history .active {
+    color: gray;
+}
+
+.history .active:hover {
+    cursor: default;
+}
+
+.hidden {
+    display: none!important;
+}
+
+.popup-overlay {
+    background-color: #000000d1;
+}
+
+.modal {
+    display: block;
+    position: unset;
+    margin: auto;
+    width: 75%;
+    max-width: 1024px;
+    background: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* border-radius: 5px; */
+}
+
+.modal .header, .modal .content {
+    padding: .75rem;
+}
+
+.modal .header {
+    border-bottom: solid 1px white;
+    background: #3e1d02;
+    color: white;
+}
+
+.modal .content {
+    margin-top: unset;
+    max-height: 40vh;
+    overflow-y: scroll;
+}
+
+.modal .footer {
+    padding: .75rem;
+    border-top: solid 1px #3e1d02;
+    text-align: right;
+}
+
+.modal .footer .btn {
+    margin: 2px;
+}
+
+.home-banniere {
+    height: 75vh;
+    overflow-y: hidden;
+    /* background-color: #9e5417; */
+}
+
+.brown {
+    background-color: #9e54177b;
+    width: 100%;
+    height: 100%;
+}
+
+.banniere {
+    width: 100%;
+    /* opacity: 0.4; */
+    height: 100%;
+    background-image: url('../img/banniere.jpg');
+    background-size: 100%;
+}
+
+.content {
+    margin-top: -8rem;
+}
+
+.titled-content {
+    margin-top: -7px;
+}
+
+.white-bg {
+    background-color: white;
+}
+
+/* .shadow {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+} */
+
+.disposition {
+    padding: 3rem 5rem;
+}
+
+.content h1 {
+    color: #76923b;
+}
+
+.service {
+    height: 50vh;
+    max-height: 250px;
+    margin-top: 2rem;
+}
+
+.service-content {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.service-content img {
+    width: 100%;
+}
+
+.service-content-fond {
+    height: 100%;
+    width: 94%;
+    background-color: #9e54172e;
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+    text-align: center;
+}
+
+.service-content-fond a:hover {
+    text-decoration: none;
+}
+
+.service-content-description {
+    background-color: #76923be6;
+    height: 4rem;
+    padding: .5rem;
+}
+
+.translucide {
+    height: 100%;
+    width: 100%;
+    opacity: .2;
+    padding-top: 12rem;
+}
+
+.translucide:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+
+.service-content-description span {
+    font-size: 24px;
+    font-weight: 600;
+    color: white;
+}
+
+@media only screen and (min-height: 1365px) {
+    .home-banniere {
+        height: 56vh;
+    }
+}
+
+@media only screen and (max-width: 1199px) {
+    .service-content-fond {
+        width: 93%;
+    }
+
+    .service-content img {
+        height: 100%;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .home-banniere {
+        height: 30vh;
+    }
+
+    .service-content-fond {
+        width: 95%;
+    }
+
+    .service-content img {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .home-banniere {
+        height: 10vh;
+    }
+
+    .service-content-fond {
+        width: 93%;
+    }
+}
+
+.section-bg {
+    background-image: url('../img/fond.jpg');
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+
+.section-bg-opacity {
+    opacity: 0.93;
+    background-color: white;
+}
+
+.material-content img, .sujets img {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.material-content img:hover, .sujets img:hover {
+    transform:scale(1.02);
+}
+
+.partner-content {
+    height: 25vh;
+    max-height: 95px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.partner-content img {
+    height: 100%;
+    margin-bottom: 2rem;
+}
+
+.detail img {
+    width: 100%;
+}
+
+.btn-launch {
+    margin-top: 5px;
+    border-radius: unset;
+    width: 100%;
+    background-color: #3e1d02c2;
+    border-color: #9e5214a1;
+    color: white;
+}
+
+.btn-launch:hover {
+    background-color: #3e1d02;
+    color: white;
+}
+
+.sujets-description {
+    margin-bottom: 2rem;;
+}
+
+.leaflet-container {
+    height: 78vh;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.carte .row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.carte .map-div {
+    padding-right: 1px;
+    padding-left: 1px;
+}
+
+.carte .menu {
+    background-color: #212529;
+    border-top: white;
+    border-right: white;
+    padding: 2px;
+}
+
+.carte .menu .form-control {
+    border-radius: 0px;
+}
+
+.map .shadow {
+    box-shadow: none!important;
+}
+
+footer {
+    height: 25vh;
+    width: 100%;
+    background-color: #3e1d02;
+    text-align: center;
+}
+
+footer span {
+    color: white;
+}
+
+footer a {
+    color: white!important;
+    display: block;
+    font-family: monospace;
+}
+
+.lang-a {
+    display: inline;
+    margin: 5px;
+    padding: 0px;
+    background: none;
+    border: none;
+    color: white;
+    font-family: monospace;
+}

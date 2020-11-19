@@ -1,0 +1,11 @@
+{
+    "header_home" : "Accueil",
+    "header_map" : "Carte",
+    "header_dashboard" : "Tableau de bord",
+    "header_subjects" : "Sujets",
+    "header_about" : "A propos",
+    "header_contactUs" : "Nous contacter",
+
+    "footer_links" : "Liens",
+    "footer_language" : "Langues"
+}
