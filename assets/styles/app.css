@@ -327,10 +327,17 @@
 }
 
 .carte .menu {
-    background-color: #212529;
-    border-top: white;
-    border-right: white;
-    padding: 2px;
+    opacity: .95;
+    background-color: #2b373b;
+    color: white;
+    /* border-top: white; */
+    /* border-right: white; */
+    border-radius: 2px;
+    padding: 5px;
+    position: absolute;
+    top: 90px;
+    left: 10px;
+    z-index: 999;
 }
 
 .carte .menu .form-control {

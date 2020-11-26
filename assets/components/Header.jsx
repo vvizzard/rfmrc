@@ -41,22 +41,22 @@ function Header(props) {
                                     />
                                 </Link>
                             </li>
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <Link className="nav-link" to="/tableauDeBord">
                                     <FormattedMessage
                                         id="header_dashboard"
                                         defaultMessage="Tableau de bord"
                                     />
                                 </Link>
-                            </li>
-                            <li className="nav-item">
+                            </li> */}
+                            {/* <li className="nav-item">
                                 <Link className="nav-link" to="/sujets">
                                     <FormattedMessage
                                         id="header_subjects"
                                         defaultMessage="sujets"
                                     />
                                 </Link>
-                            </li>
+                            </li> */}
                             <li className="nav-item">
                                 <Link className="nav-link" to="/about">
                                     <FormattedMessage
