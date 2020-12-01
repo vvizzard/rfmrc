@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Header, Home, Detail, Carte, EnCours, Sujets, About, CookiesConditions } from './components'
 import { IntlProvider } from "react-intl";
 import CookieConsent from "react-cookie-consent";
+import Cookies from 'js-cookie';
 
 import en from "./translation/en.json"
 import fr from "./translation/fr.json"
@@ -17,7 +18,8 @@ class Main extends Component {
             locale: "fr",
             langue: "fr",
             langueSelected: "fr",
-            conditionUtilisationPopup: false
+            conditionUtilisationPopup: false,
+            curr_license: "license_v1" //Current license version
         };
 
         this.setUpInternationalization();
@@ -61,15 +63,21 @@ class Main extends Component {
     }
 
     closeModal() {
+        Cookies.set('license', this.state.curr_license);
+        console.log("save : license : " + Cookies.get('license'));
         this.setState({
             conditionUtilisationPopup : false
         });
     }
 
     componentDidMount() {
-        this.setState({
-            conditionUtilisationPopup : true
-        });
+        const license = Cookies.get('license');
+        console.log("reade : license : " + license);
+        if(!license || license != this.state.curr_license) {
+            this.setState({
+                conditionUtilisationPopup : true
+            });
+        }
     }
 
     render() {
@@ -86,7 +94,7 @@ class Main extends Component {
                             <Route path="/" exact component={() => <Home onClick = {() => this.handleClick(event)} />} />
                             <Route path="/tableauDeBord" exact component={() => <EnCours onClick = {() => this.handleClick(event)} />} />
                             <Route path="/sujets" exact component={() => <Sujets onClick = {() => this.handleClick(event)} />} />
-                            <Route path="/detail" exact component={() => <Detail onClick = {() => this.handleClick(event)} />} />
+                            <Route path="/detail/:id" exact component={() => <Detail onClick = {() => this.handleClick(event)} />} />
                             <Route path="/map" exact component={() => <Carte />} />
                             <Route path="/about" exact component={() => <About onClick = {() => this.handleClick(event)} />} />
                         </Switch>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from "react-router-dom"
+import { FormattedMessage } from "react-intl"
 
 function Partners(props) {
     const partners = [];
@@ -24,7 +25,12 @@ function Partners(props) {
 
     return (
         <div>
-            <h1>Partenaires</h1><br/>
+            <h1>
+                <FormattedMessage
+                    id="globale_partner"
+                    defaultMessage="Partenaires"
+                />    
+            </h1><br/>
             <div className="row">
                 {partners}
             </div>

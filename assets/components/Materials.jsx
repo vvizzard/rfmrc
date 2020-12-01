@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link, withRouter } from "react-router-dom"
+import { FormattedMessage } from "react-intl"
 
 function Materials(props) {
     const materials = [];
@@ -42,7 +43,12 @@ function Materials(props) {
 
     return (
         <div>
-            <h1>Materiels</h1><br/>
+            <h1>
+                <FormattedMessage
+                    id="globale_materiel"
+                    defaultMessage="Matériels"
+                />
+            </h1><br/>
             <p>Nos matériels pour soutenir nos activités</p><br/>
             <div className="row">
                 {materials}

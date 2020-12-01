@@ -7,5 +7,9 @@
     "header_contactUs" : "Nous contacter",
 
     "footer_links" : "Liens",
-    "footer_language" : "Langues"
+    "footer_language" : "Langues",
+
+    "globale_service" : "Services",
+    "globale_materiel" : "Materiels",
+    "globale_partner" : "Partenaires"
 }

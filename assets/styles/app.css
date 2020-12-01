@@ -254,6 +254,25 @@
     .service-content-fond {
         width: 93%;
     }
+
+    .navbar-collapse {
+        display: -ms-flexbox!important;
+        display: flex!important;
+        -ms-flex-preferred-size: auto;
+        flex-basis: auto;
+        display: contents;
+    }
+
+    .navbar-nav {
+        flex-direction: row;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+    }
 }
 
 .section-bg {
