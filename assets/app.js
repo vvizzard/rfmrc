@@ -7,6 +7,12 @@
 
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.css';
+import './styles/base.css';
+import './styles/grid.css';
+import './styles/layout.css';
+import './styles/style.min.css';
+import './styles/enfold.css';
+import './styles/custom.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';

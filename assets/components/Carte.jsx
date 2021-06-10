@@ -11,8 +11,8 @@ export default class Carte extends Component {
     super(props);
 
     this.mapRef = createRef();
-    this.mapCenter = [-6.82349, 39.26951];
-    this.mapZoom = 4;
+    // this.mapCenter = props.center!=null?props.center:[-6.82349, 39.26951];
+    // this.mapZoom = props.zoom!=null?props.zoom:4;
 
     this.mapDateRef = createRef();
     this.mapTypeRef = createRef();
@@ -202,7 +202,7 @@ export default class Carte extends Component {
 
     return (
       <div>
-        <History link={histories} title="Carte" />
+        {/* <History link={histories} title="Carte" /> */}
         <div className="content titled-content map">
           <section className="carte">
             <div className="row">
@@ -228,7 +228,7 @@ export default class Carte extends Component {
                   </div>
                   <button onClick={()=>{this.updateFireOverlay()}} className="btn btn-primary">Lancer</button>
                 </div>
-                <Map center={this.mapCenter} zoom={this.mapZoom} ref={this.mapRef}>
+                <Map center={this.props.center} zoom={this.props.zoom} ref={this.mapRef}>
                   <TileLayer
                     url={this.state.tiles.url}
                     attribution={this.state.tiles.attribution}
@@ -246,7 +246,7 @@ export default class Carte extends Component {
               </div>
             </div>
           </section>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </div>
     );

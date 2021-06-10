@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Header, Home, Detail, Carte, EnCours, Sujets, About, CookiesConditions } from './components'
+import { Header, Home, Detail, Carte, EnCours, Sujets, About, CookiesConditions, CarteContainer } from './components'
 import { IntlProvider } from "react-intl";
 import CookieConsent from "react-cookie-consent";
 
@@ -78,17 +78,22 @@ class Main extends Component {
 
         return (
             <IntlProvider locale={this.state.locale} messages={this.state.langue}>
-                <CookiesConditions closePopup={() => this.closeModal()} open={this.state.conditionUtilisationPopup} />
+                {/* <CookiesConditions closePopup={() => this.closeModal()} open={this.state.conditionUtilisationPopup} /> */}
                 <Router>
-                    <Header onChange = {() => this.handleChange(event)} selected = {this.state.langueSelected} />
+                    {/* <Header onChange = {() => this.handleChange(event)} selected = {this.state.langueSelected} /> */}
                     <div className="">
                         <Switch>
-                            <Route path="/" exact component={() => <Home onClick = {() => this.handleClick(event)} />} />
-                            <Route path="/tableauDeBord" exact component={() => <EnCours onClick = {() => this.handleClick(event)} />} />
-                            <Route path="/sujets" exact component={() => <Sujets onClick = {() => this.handleClick(event)} />} />
-                            <Route path="/detail" exact component={() => <Detail onClick = {() => this.handleClick(event)} />} />
-                            <Route path="/map" exact component={() => <Carte />} />
-                            <Route path="/about" exact component={() => <About onClick = {() => this.handleClick(event)} />} />
+                            <Route path="/" exact component={() => <CarteContainer active="1" region="1" />} />
+                            <Route path="/madagascar" exact component={() => <CarteContainer active="1" region="1" />} />
+                            <Route path="/ea" exact component={() => <CarteContainer active="1" region="2" />} />
+                            <Route path="/one_day_forecast_madagascar" exact component={() => <CarteContainer active="1" region="1" />} />
+                            <Route path="/one_day_forecast_ea" exact component={() => <CarteContainer active="1" region="2" />} />
+                            <Route path="/active_fire_data_madagascar" exact component={() => <CarteContainer active="2" region="1" />} />
+                            <Route path="/active_fire_data_ea" exact component={() => <CarteContainer active="2" region="2" />} />
+                            <Route path="/mburned_area_madagascar" exact component={() => <CarteContainer active="3" region="1" />} />
+                            <Route path="/mburned_area_ea" exact component={() => <CarteContainer active="3" region="2" />} />
+                            <Route path="/aburned_area_madagascar" exact component={() => <CarteContainer active="4" region="1" />} />
+                            <Route path="/aburned_area_ea" exact component={() => <CarteContainer active="4" region="2" />} />
                         </Switch>
                     </div>
                 </Router>

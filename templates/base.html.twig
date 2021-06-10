@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html class="responsive" style="background-image:url('https://brouillon.llanddev.org/img/bg-feux.jpg'); background-repeat: no-repeat; background-size: cover;">
     <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta charset="utf-8">
+        {# <link rel="stylesheet" href="{{ asset('assets/styles/base.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/styles/grid.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/styles/layout.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/styles/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/styles/enfold.css') }}"><!-- couleur -->
+        <link rel="stylesheet" href="{{ asset('assets/styles/custom.css') }}"> #}
+        <title>{% block title %}GEARFMRC{% endblock %}</title>
         <link
             rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            {# href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" #}
         />
         <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
@@ -13,8 +19,534 @@
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
     </head>
-    <body>
-        {% block body %}{% endblock %}
+    <style type="text/css">
+        .logo img {
+            max-height: 65px;
+            margin: 1em 0;
+        }
+        .transect p {
+            color: white;
+        }
+        .entry-title {
+            text-align: center;
+        }
+		#root .content {
+			border-right-style: unset;
+			border-right-width: 0px;
+			margin-right: unset;
+		}
+		.centered {
+			text-align: center;
+		}
+		#mailto {
+			color: #a81010;
+		}
+		.p {
+			margin: 0.85em 0;
+			padding: 0;
+			border: 0;
+			font-size: 100%;
+			font: inherit;
+			vertical-align: baseline;
+			box-sizing: border-box;
+			display: block;
+			margin-block-start: 1em;
+			margin-block-end: 1em;
+			margin-inline-start: 0px;
+			margin-inline-end: 0px;
+		}
+    </style>
+
+    <body id="top" class="boxed" >
+        <header id="header" class="all_colors header_color light_bg_color  av_header_top av_logo_left av_main_nav_header av_menu_right av_slim av_header_sticky_disabled av_header_shrinking_disabled av_header_stretch_disabled av_mobile_menu_tablet av_header_searchicon av_header_unstick_top_disabled av_seperator_small_border av_bottom_nav_disabled ">
+
+			<div id="header_main" class="container_wrap container_wrap_logo">
+		
+	        <div class="container av-logo-container">
+	        	<!-- <div class="inner-container"> -->
+	        	<div class="">
+	        		<span class="logo">
+	        			<a href="https://gfmc.online/">
+	        				<img height="50" width="150" src="https://gfmc.online/wp-content/uploads/gfmc_logo_2020_2.png" alt="GFMC">
+	        			</a>
+	        		</span>
+	        		<span class="logo" style="left:265px;">
+	        			<a href="https://brouillon.llanddev.org/">
+	        				<img height="50" width="150" src="https://brouillon.llanddev.org/img/logo_reafmrc.jpg" alt="GFMC">
+	        			</a>
+	        		</span>
+	        		<nav class="main_menu" data-selectname="Select a page">
+	        			<div class="avia-menu av-main-nav-wrap">
+	        				<ul id="avia-menu" class="menu av-main-nav">
+	        					<li onmouseenter="showDropdown('menu-item-119784', 'agfmc')" onmouseleave="hideDropdown('menu-item-119784', 'agfmc')" id="menu-item-119784" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-mega-parent menu-item-top-level menu-item-top-level-1 dropdown_ul_available" style="overflow: hidden;">
+	        						<a href="#" style="cursor: default;" class="">
+	        							<span class="avia-bullet"></span>
+	        							<span class="avia-menu-text">About GFMC</span>
+	        							<span class="avia-menu-fx">
+	        								<span class="avia-arrow-wrap">
+	        									<span class="avia-arrow"></span>
+	        								</span>
+	        							</span>
+	        							<span class="dropdown_available"></span>
+	        						</a>
+
+	        						<script type="text/javascript">
+	        							function showDropdown(idMain, idTarget) {
+	        								document.getElementById(idMain).style.overflow = 'visible';
+	        								document.getElementById(idTarget).style.opacity = 1;
+	        								document.getElementById(idTarget).style.display = 'block';
+	        							}
+	        							function hideDropdown(idMain, idTarget) {
+	        								document.getElementById(idMain).style.overflow = 'hidden';
+	        								document.getElementById(idTarget).style.opacity = 0;
+	        								document.getElementById(idTarget).style.display = 'none';
+	        							}
+	        						</script>
+
+									<div id="agfmc" class="avia_mega_div avia_mega1 three units" style="opacity: 0; display: none; right: -198.531px;">
+
+										<ul class="sub-menu">
+											<li id="menu-item-119986" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children avia_mega_menu_columns_1 three units avia_mega_menu_columns_last avia_mega_menu_columns_first">
+												<span class="mega_menu_title heading-color av-special-font">GLOBAL FIRE MONITORING CENTER</span>
+												<ul class="sub-menu">
+													<li id="menu-item-119985" class="menu-item menu-item-type-custom menu-item-object-custom">
+														<a href="https://gfmc.online/intro/about.html">
+															<span class="avia-bullet"></span><span class="avia-menu-text">About the GFMC</span>
+														</a>
+													</li>
+													<li id="menu-item-119987" class="menu-item menu-item-type-custom menu-item-object-custom">
+														<a href="https://gfmc.online/intro/partner.html">
+															<span class="avia-bullet"></span><span class="avia-menu-text">Partners and Sponsors of the GFMC</span>
+														</a>
+													</li>
+													<li id="menu-item-119988" class="menu-item menu-item-type-custom menu-item-object-custom">
+														<a href="https://gfmc.online/intro/about4.html">
+															<span class="avia-bullet"></span><span class="avia-menu-text">GFMC Activities Calendar</span>
+														</a>
+													</li>
+													<li id="menu-item-119989" class="menu-item menu-item-type-custom menu-item-object-custom">
+														<a href="https://gfmc.online/intro/about3.html">
+															<span class="avia-bullet"></span><span class="avia-menu-text">Contact</span>
+														</a>
+													</li>
+													<li id="menu-item-119851" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-has-children">
+														<a href="https://gfmc.online/feueroekologie/agd.html">
+															<span class="avia-bullet"></span><span class="avia-menu-text">Arbeitsgruppe Feuerökologie</span>
+														</a>
+														<ul class="sub-menu">
+															<li id="menu-item-119990" class="menu-item menu-item-type-custom menu-item-object-custom">
+																<a href="https://gfmc.online/feueroekologie/feuerd.html">
+																	<span class="avia-bullet"></span><span class="avia-menu-text">Feuerökologie</span>
+																</a>
+															</li>
+															<li id="menu-item-119991" class="menu-item menu-item-type-custom menu-item-object-custom">
+																<a href="https://gfmc.online/feueroekologie/forschd.html">
+																	<span class="avia-bullet"></span><span class="avia-menu-text">Forschung</span>
+																</a>
+															</li>
+															<li id="menu-item-119992" class="menu-item menu-item-type-custom menu-item-object-custom">
+																<a href="https://gfmc.online/feueroekologie/veroeff.html">
+																	<span class="avia-bullet"></span><span class="avia-menu-text">Veröffentlichungen</span>
+																</a>
+															</li>
+															<li id="menu-item-119993" class="menu-item menu-item-type-custom menu-item-object-custom">
+																<a href="https://gfmc.online/feueroekologie/promotionen.html">
+																	<span class="avia-bullet"></span><span class="avia-menu-text">Promotionen</span>
+																</a>
+															</li>
+															<li id="menu-item-119994" class="menu-item menu-item-type-custom menu-item-object-custom">
+																<a href="https://gfmc.online/feueroekologie/dipld.html">
+																	<span class="avia-bullet"></span><span class="avia-menu-text">Diplomarbeiten</span>
+																</a>
+															</li>
+															<li id="menu-item-119995" class="menu-item menu-item-type-custom menu-item-object-custom">
+																<a href="https://gfmc.online/feueroekologie/kursd.html">
+																	<span class="avia-bullet"></span><span class="avia-menu-text">Kurse</span>
+																</a>
+															</li>
+															<li id="menu-item-119996" class="menu-item menu-item-type-custom menu-item-object-custom">
+																<a href="http://www.ffu.uni-freiburg.de/ffu/">
+																	<span class="avia-bullet"></span><span class="avia-menu-text">Fakultät für Umwelt und Natürliche Ressourcen</span>
+																</a>
+															</li>
+															<li id="menu-item-119997" class="menu-item menu-item-type-custom menu-item-object-custom">
+																<a href="http://www.uni-freiburg.de/">
+																	<span class="avia-bullet"></span><span class="avia-menu-text">Uni Freiburg</span>
+																</a>
+															</li>
+														</ul>
+													</li>
+												</ul>
+											</li>
+										</ul>
+
+									</div>
+								</li>
+								<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-mega-parent menu-item-top-level menu-item-top-level-1 dropdown_ul_available" style="overflow: hidden;">
+	        						<a href="#" class="">
+	        							<span class="avia-bullet"></span>
+	        							<span class="avia-menu-text">About REAFMRC</span>
+	        							<span class="avia-menu-fx">
+	        								<span class="avia-arrow-wrap">
+	        									<span class="avia-arrow"></span>
+	        								</span>
+	        							</span>
+	        							<span class="dropdown_available"></span>
+	        						</a>
+								</li>
+								<li onmouseenter="showDropdown('menu-item-119785', 'gc')" onmouseleave="hideDropdown('menu-item-119785', 'gc')" id="menu-item-119785" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-mega-parent menu-item-top-level menu-item-top-level-2 dropdown_ul_available" style="overflow: hidden;">
+									<a href="#" style="cursor: default;" class="">
+										<span class="avia-bullet"></span>
+										<span class="avia-menu-text">Global Cooperation</span>
+										<span class="avia-menu-fx">
+											<span class="avia-arrow-wrap"><span class="avia-arrow"></span></span>
+										</span>
+										<span class="dropdown_available"></span>
+									</a>
+									<div id="gc" class="avia_mega_div avia_mega3 nine units" style="opacity: 0; display: none; right: -460px;">
+
+										<ul class="sub-menu">
+											<li style="border-right: unset;" id="menu-item-119903" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children avia_mega_menu_columns_3 three units  avia_mega_menu_columns_first"><span class="mega_menu_title heading-color av-special-font">Global Wildland Fire Network (GWFN)</span>
+												<ul class="sub-menu">
+													<li id="menu-item-119904" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="https://gfmc.online/globalnetworks/globalnet.html"><span class="avia-bullet"></span><span class="avia-menu-text">GWFN Home</span></a></li>
+													<li id="menu-item-119905" class="avia_mega_text_block menu-item menu-item-type-custom menu-item-object-custom">Direct access to the 14 Regional Wildland Fire Networks</li>
+													<li id="menu-item-119906" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="https://gfmc.online/globalnetworks/balticregion/balticregion.html"><span class="avia-bullet"></span><span class="avia-menu-text">Regional Eurasian Wildland Fire Network</span></a></li>
+													<li id="menu-item-119907" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="https://gfmc.online/globalnetworks/seeurope/SEEurope.html"><span class="avia-bullet"></span><span class="avia-menu-text">Regional Southeast Europe / Caucasus Wildland Fire Network</span></a></li>
+													<li id="menu-item-119908" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="https://gfmc.online/globalnetworks/EuroAlpine/EuroAlpine.html"><span class="avia-bullet"></span><span class="avia-menu-text">Sub-Regional Euro-Alpine Wildland Fire Network</span></a></li>
+													<li id="menu-item-119909" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="https://gfmc.online/globalnetworks/CentralAsia/CentralAsia.html"><span class="avia-bullet"></span><span class="avia-menu-text">Regional Central Asia Wildland Fire Network</span></a></li>
+													<li id="menu-item-119910" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="https://gfmc.online/globalnetworks/Northeast-Asia/Northeastasia.html"><span class="avia-bullet"></span><span class="avia-menu-text">Regional Northeast Asia Wildland Fire Network</span></a></li>
+													<li id="menu-item-119911" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="https://gfmc.online/globalnetworks/South_Asia/Front_RSAWFN.html"><span class="avia-bullet"></span><span class="avia-menu-text">Regional South Asia Wildland Fire Network</span></a></li>
+													<li id="menu-item-119912" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="https://gfmc.online/globalnetworks/SouthEastAsia/ASEAN-FireNet.html"><span class="avia-bullet"></span><span class="avia-menu-text">Regional South East Asia Wildland FireNetwork (ASEAN)</span></a></li>
+													<li id="menu-item-119913" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="https://gfmc.online/globalnetworks/Australasia/Australasia.html"><span class="avia-bullet"></span><span class="avia-menu-text">Regional Australasia Wildland Fire Network (AFAC)</span></a></li>
+													<li id="menu-item-119914" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="https://gfmc.online/globalnetworks/Africa/Afrifirenet.html"><span class="avia-bullet"></span><span class="avia-menu-text">Regional Subsahara Africa Wildland FireNetwork (Afrifirenet)</span></a></li>
+													<li id="menu-item-119915" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="https://gfmc.online/globalnetworks/NorthAmerica/NorthAmerica.html"><span class="avia-bullet"></span><span class="avia-menu-text">Regional North America Wildland Fire Network</span></a></li>
+													<li id="menu-item-119916" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="https://gfmc.online/globalnetworks/southamerica/SouthAmerica.html"><span class="avia-bullet"></span><span class="avia-menu-text">Regional South America Wildland FireNetwork</span></a></li>
+													<li id="menu-item-119917" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="https://gfmc.online/globalnetworks/mesoamerica/mesoamerica-2.html"><span class="avia-bullet"></span><span class="avia-menu-text">Regional Mesoamerica Wildland Fire Network</span></a></li>
+													<li id="menu-item-119918" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="https://gfmc.online/globalnetworks/Caribbean/Caribbean.html"><span class="avia-bullet"></span><span class="avia-menu-text">Regional Caribbean Wildland Fire Network</span></a></li>
+													<li id="menu-item-119919" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="https://gfmc.online/globalnetworks/Mediterrania/Mediterrania.html"><span class="avia-bullet"></span><span class="avia-menu-text">Regional Mediterranean Wildland Fire Network (Silva Mediterranea Forest Fire Working Group)</span></a></li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+								</li>
+								<li id="menu-item-119784" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-mega-parent menu-item-top-level menu-item-top-level-1 dropdown_ul_available" style="overflow: hidden;">
+	        						<a href="forecast.html" class="">
+	        							<span class="avia-bullet"></span>
+	        							<span class="avia-menu-text">1 Day Fire Danger Forecast </span>
+	        							<span class="avia-menu-fx">
+	        								<span class="avia-arrow-wrap">
+	        									<span class="avia-arrow"></span>
+	        								</span>
+	        							</span>
+	        							<span class="dropdown_available"></span>
+	        						</a>
+								</li>
+								<li id="menu-item-119784" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-mega-parent menu-item-top-level menu-item-top-level-1 dropdown_ul_available" style="overflow: hidden;">
+	        						<a href="firedata.html" class="">
+	        							<span class="avia-bullet"></span>
+	        							<span class="avia-menu-text">Active Fire Data</span>
+	        							<span class="avia-menu-fx">
+	        								<span class="avia-arrow-wrap">
+	        									<span class="avia-arrow"></span>
+	        								</span>
+	        							</span>
+	        							<span class="dropdown_available"></span>
+	        						</a>
+								</li>
+								<li onmouseenter="showDropdown('menu-item-119787', 'bam')" onmouseleave="hideDropdown('menu-item-119785', 'bam')" id="menu-item-119787" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-mega-parent menu-item-top-level menu-item-top-level-1 dropdown_ul_available" style="overflow: hidden;">
+	        						<a href="#" style="cursor: default;" class="" onmouseenter="function ss(){document.getElementById('apoitra').style.display = 'block';};">
+	        							<span class="avia-bullet"></span>
+	        							<span class="avia-menu-text">Burned Area Monitoring</span>
+	        							<span class="avia-menu-fx">
+	        								<span class="avia-arrow-wrap">
+	        									<span class="avia-arrow"></span>
+	        								</span>
+	        							</span>
+	        							<span class="dropdown_available"></span>
+	        						</a>
+
+	        						<script type="text/javascript">
+	        							function showDropdown(idMain, idTarget) {
+	        								document.getElementById(idMain).style.overflow = 'visible';
+	        								document.getElementById(idTarget).style.opacity = 1;
+	        								document.getElementById(idTarget).style.display = 'block';
+	        							}
+	        						</script>
+
+									<div id="bam" class="avia_mega_div avia_mega1 three units" style="opacity: 0; display: none; right: -83px;">
+
+										<ul class="sub-menu">
+											<li id="menu-item-119986" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children avia_mega_menu_columns_1 three units avia_mega_menu_columns_last avia_mega_menu_columns_first">
+												<span class="mega_menu_title heading-color av-special-font">BURNED AREA MONITORING</span>
+												<ul class="sub-menu">
+													<li id="menu-item-119851" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-has-children">
+														<a href="https://gfmc.online/feueroekologie/agd.html">
+															<span class="avia-bullet"></span><span class="avia-menu-text">Monthly Burned Area Monitoring</span>
+														</a>
+														<ul class="sub-menu">
+															<li id="menu-item-119990" class="menu-item menu-item-type-custom menu-item-object-custom">
+																<a href="month.html">
+																	<span class="avia-bullet"></span><span class="avia-menu-text">Madagascar</span>
+																</a>
+															</li>
+															<li id="menu-item-119991" class="menu-item menu-item-type-custom menu-item-object-custom">
+																<a href="month.html">
+																	<span class="avia-bullet"></span><span class="avia-menu-text">East-Africa</span>
+																</a>
+															</li>
+														</ul>
+													</li>
+													<li id="menu-item-119851" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-has-children">
+														<a href="https://gfmc.online/feueroekologie/agd.html">
+															<span class="avia-bullet"></span><span class="avia-menu-text">Annual Burned Area Monitoring</span>
+														</a>
+														<ul class="sub-menu">
+															<li id="menu-item-119990" class="menu-item menu-item-type-custom menu-item-object-custom">
+																<a href="annual.html">
+																	<span class="avia-bullet"></span><span class="avia-menu-text">Madagascar</span>
+																</a>
+															</li>
+															<li id="menu-item-119991" class="menu-item menu-item-type-custom menu-item-object-custom">
+																<a href="annual.html">
+																	<span class="avia-bullet"></span><span class="avia-menu-text">East-Africa</span>
+																</a>
+															</li>
+														</ul>
+													</li>
+												</ul>
+											</li>
+										</ul>
+
+									</div>
+								</li>
+								<li id="menu-item-search" class="noMobile menu-item menu-item-search-dropdown menu-item-avia-special">
+									<a 
+										href="?s=" 
+										data-avia-search-tooltip="
+											<form action=&quot;https://gfmc.online/&quot; id=&quot;searchform&quot; method=&quot;get&quot; class=&quot;&quot;>
+												<div>
+													<input type=&quot;submit&quot; value=&quot;&quot; id=&quot;searchsubmit&quot; class=&quot;button avia-font-entypo-fontello&quot; />
+													<input type=&quot;text&quot; id=&quot;s&quot; name=&quot;s&quot; value=&quot;&quot; placeholder='Search' />
+														</div>
+											</form>
+										" 
+										aria-hidden="true" 
+										data-av_icon="" 
+										data-av_iconfont="entypo-fontello"
+									>
+										<span class="avia_hidden_link_text">Search</span>
+									</a>
+		        		   		</li>
+			        		   <li class="av-burger-menu-main menu-item-avia-special ">
+			        			<a href="#">
+									<span class="av-hamburger av-hamburger--spin av-js-hamburger">
+							        <span class="av-hamburger-box">
+								          <span class="av-hamburger-inner"></span>
+								          <strong>Menu</strong>
+							        </span>
+									</span>
+								</a>
+			        		   </li>
+			        		</ul>
+			        	</div>
+			        </nav>
+			    </div> 
+			</div> 
+			<!-- end container_wrap-->
+			</div>
+			
+			<div class="header_bg"></div>
+
+        <!-- end header -->
+        </header>
+        <div id="main" class="all_colors" data-scroll-offset="0">
+
+            <div class="main_color container_wrap_first container_wrap sidebar_right">
+                <div class="container">
+                    <main class="template-page alpha units" style="padding-top: 50px; padding-bottom: 5px;">
+                        <div class="post-entry post-entry-type-page post-entry-28">
+                            <div class="entry-content-wrapper clearfix">
+                                <div class="pf-content">
+
+									<style type="text/css">
+										.component {
+											display: grid;
+											grid-template-columns: auto auto auto;
+										}
+										.grid-item {
+											padding: 1em;
+											text-align: center;
+										}
+										.grid-item img {
+											height: 72px;
+										}
+										.grid-item a {
+											font-size: 24px;
+											text-decoration: none;
+											font-family: 'Marvel';
+										}
+										.partners .grid-item  a {
+											font-size: 24px;
+											text-decoration: none;
+											font-family: 'Marvel';
+											font-weight: 600;
+										}
+										.partners .grid-item a:hover {
+											font-style: Italic;
+										}
+									</style>
+
+                                    {# <div class="entry-content-wrapper clearfix standard-content">
+                                        <header class="entry-content-header">
+                                            <h1 class="post-title entry-title">	
+                                                <a href="#" rel="bookmark" title="Permanent Link: Global Fire Early Warning System">
+                                                    REGIONAL EAST AFRICA FIRE MANAGEMENT RESOURCE CENTER
+                                                </a>
+                                            </h1>
+                                            <span class="av-vertical-delimiter"></span>
+                                            <div class="entry-content">
+                                                <div class="pf-content">
+                                                    <p style="text-align: center;">
+														<a class="btn btn-primary" href="forecast.html">1 Day Fire Danger Forecast</a> 
+														| Active Fire Data&nbsp;| 
+														<a href="month.html" target="_blank" rel="noopener">Monthly Burned Area Monitoring</a>
+														&nbsp;| 
+														<a class="btn btn-primary" href="annual.html">Annually Burned Area Monitoring</a>
+														<!-- &nbsp;| 
+														<a class="btn btn-primary" href="https://gfmc.online/gwfews/partners-2.html"> Further Information &amp; Contacts</a>
+														&nbsp;| 
+														<a class="btn btn-primary" href="https://gfmc.online/fwf/fwf.html"> GFMC EW Portal</a> -->
+													</p>
+													<h3 style="text-align: center;">
+														<strong>Active Fire Data</strong>
+													</h3>
+													<p style="text-align: center;">
+														Madagascar&nbsp;| 
+														<a class="btn btn-primary" href="forecast.html">East Africa</a> 
+													</p>
+													
+													<p style="text-align: center;">
+														<strong>
+															<span>Note: Beta version map, for any suggestion, please send your comments at <a style="color: #a81010;" href="mailto:lab_llanddev@moov.mg">lab_llanddev@moov.mg</a>
+															</span>
+														</strong>
+													</p>
+
+                                                    <h2 style="text-align: center;">Madagascar</h2>
+                                                    <p>
+                                                        {% block body %}{% endblock %}
+                                                    </p>
+                                                    
+                                                    <section class="av_textblock_section ">
+                                                        <style type="text/css">
+                                                            .component {
+                                                                display: grid;
+                                                                grid-template-columns: auto auto auto;
+                                                            }
+                                                            .grid-item {
+                                                                padding: 1em;
+                                                                text-align: center;
+                                                            }
+                                                            .grid-item img {
+                                                                height: 72px;
+                                                            }
+                                                            .grid-item a {
+                                                                font-size: 24px;
+                                                                text-decoration: none;
+                                                                font-family: 'Marvel';
+                                                            }
+                                                            .partners .grid-item  a {
+                                                                font-size: 24px;
+                                                                text-decoration: none;
+                                                                font-family: 'Marvel';
+                                                                font-weight: 600;
+                                                            }
+                                                            .partners .grid-item a:hover {
+                                                                font-style: Italic;
+                                                            }
+                                                        </style>
+                                                        <div class="avia_textblock  ">
+                                                            <h3></h3>
+                                                            <!-- <h3>Partners</h3> -->
+                                                            <div class="partners">
+                                                                <div class="component partners">
+                                                                    <div class="grid-item">
+                                                                        <a href="https://gfmc.online/eurofire/covid19.html">
+                                                                            <img src="https://brouillon.llanddev.org/img/logo_medd.jpg" alt="logo">
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="grid-item">
+                                                                        <a href="https://gfmc.online/eurofire/covid19.html">
+                                                                            <img src="https://gfmc.online/wp-content/uploads/gfmc_logo_2020_2.png" alt="logo">
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="grid-item">
+                                                                        <a href="https://gfmc.online/manag/cbifm.html">
+                                                                            <img src="https://brouillon.llanddev.org/img/logo_giz.png" alt="logo">
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                            </div>
+                                        </header>
+                                    </div> #}
+
+									{% block body %}{% endblock %}
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </main>
+                    <!-- close content main element --> <!-- section close by builder template -->	
+                </div><!--end builder template-->
+            </div><!-- close default .container_wrap element -->						
+            <div class="container_wrap footer_color" id="footer">
+                <div class="container">
+                    <div class="flex_column   first el_before_">
+                        <section id="nav_menu-10" class="widget clearfix widget_nav_menu">
+                            <div class="menu-footermenu-container">
+                                <!-- <ul id="menu-footermenu" class="menu">
+                                    <li id="menu-item-116257" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-116257">
+                                        <a href="https://gfmc.online/impressum-inprint.html">Impressum</a>
+                                    </li>
+                                    <li id="menu-item-116262" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-116262">
+                                        <a href="https://gfmc.online/datenschutzerklarung.html">Datenschutzerklärung</a>
+                                    </li>
+                                </ul> -->
+                            </div>
+                            <span class="seperator extralight-border"></span>
+                        </section>
+                        <section id="text-2" class="widget clearfix widget_text">			
+                            <div class="textwidget">
+                                <p>© Global Fire Monitoring Center (GFMC) / Fire Ecology Research Group<br>
+                                    All materials produced by GFMC or IFFN must be quoted properly. Copyrights of materials provided by other organizations or publications and websites hyperlinked with this website must be observed. It is not permitted to publish or otherwise use photographs produced by the GFMC and other providers without a written permission.
+                                </p>
+                            </div>
+                            <span class="seperator extralight-border"></span>
+                        </section>
+                        <section id="custom_html-2" class="widget_text widget clearfix widget_custom_html">
+                            <div class="textwidget custom-html-widget">
+                                <p style="text-align:right">powered by 
+                                    <a href="#" target="blank" rel="noopener">LLandDev</a>
+                                </p>
+                            </div>
+                            <span class="seperator extralight-border"></span>
+                        </section>
+                    </div>
+                </div>
+            <!-- ####### END FOOTER CONTAINER ####### -->
+            </div>
+            <!-- end main -->
+        </div>
+
+
+
+
+        
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}

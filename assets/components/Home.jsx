@@ -24,7 +24,7 @@ export default class Home extends Component {
                 <div className="content">
                     <section>
                         <div className="container white-bg disposition shadow">
-                            <h1>Services</h1>
+                            <h1>Service</h1>
                             <div className="row">
                                 {services}
                             </div>
