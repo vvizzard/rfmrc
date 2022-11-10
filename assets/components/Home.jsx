@@ -26,12 +26,7 @@ export default class Home extends Component {
                 <div className="content">
                     <section>
                         <div className="container white-bg disposition shadow">
-                            <h1>
-                                <FormattedMessage
-                                    id="globale_service"
-                                    defaultMessage="Service"
-                                />
-                            </h1>
+                            <h1>Service</h1>
                             <div className="row">
                                 {services}
                             </div>

@@ -26,6 +26,7 @@
         "@fortawesome/react-fontawesome": "^0.1.12",
         "js-cookie": "^2.2.1",
         "leaflet": "^1.7.1",
+        "query-string": "^7.1.1",
         "react-cookie-consent": "^6.1.0",
         "react-intl": "^5.10.0",
         "react-leaflet": "^2.8.0",
