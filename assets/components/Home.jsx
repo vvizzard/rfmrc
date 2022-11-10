@@ -4,14 +4,16 @@ import Service from './Service'
 import Materials from './Materials'
 import Partners from './Partners'
 import Footer from './Footer'
+import { FormattedMessage } from "react-intl"
 // import banniere from '../img/banniere.jpg'
 
 export default class Home extends Component {
     render() {
         const services = [];
-        services.push(<Service key={1} link={'/detail'} img={"https://servir.adpc.net/sites/default/files/public/styles/tool_teaser_thumbnail/public/tools/images/Eco_Dash.jpg?itok=qbbKIT5v"} name={"Fire base"} />)
-        services.push(<Service key={2} link={'/detail'} img={"https://servir.adpc.net/sites/default/files/public/styles/tool_teaser_thumbnail/public/tools/images/Eco_Dash.jpg?itok=qbbKIT5v"} name={"Fire base 1"} />)
-        services.push(<Service key={3} link={'/detail'} img={"https://servir.adpc.net/sites/default/files/public/styles/tool_teaser_thumbnail/public/tools/images/Eco_Dash.jpg?itok=qbbKIT5v"} name={"Fire base 2"} />)
+        services.push(<Service key={1} link={'/detail/1'} img={"https://servir.adpc.net/sites/default/files/public/styles/tool_teaser_thumbnail/public/tools/images/Eco_Dash.jpg?itok=qbbKIT5v"} name={"Fire alert system"} />)
+        services.push(<Service key={2} link={'/detail/2'} img={"https://servir.adpc.net/sites/default/files/public/styles/tool_teaser_thumbnail/public/tools/images/Eco_Dash.jpg?itok=qbbKIT5v"} name={"Monthly fire monitoring"} />)
+        services.push(<Service key={3} link={'/detail/3'} img={"https://servir.adpc.net/sites/default/files/public/styles/tool_teaser_thumbnail/public/tools/images/Eco_Dash.jpg?itok=qbbKIT5v"} name={"Annual fire monitoring"} />)
+        services.push(<Service key={3} link={'/detail/3'} img={"https://servir.adpc.net/sites/default/files/public/styles/tool_teaser_thumbnail/public/tools/images/Eco_Dash.jpg?itok=qbbKIT5v"} name={"Fire management Alert"} />)
 
         return (
             <div>

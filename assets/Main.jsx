@@ -13,6 +13,7 @@ import {
 } from "./components";
 import { IntlProvider } from "react-intl";
 import CookieConsent from "react-cookie-consent";
+import Cookies from 'js-cookie';
 
 import en from "./translation/en.json";
 import fr from "./translation/fr.json";

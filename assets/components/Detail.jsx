@@ -4,6 +4,7 @@ import DetailL from './DetailL'
 import DetailR from './DetailR'
 import Partners from './Partners'
 import Footer from './Footer'
+import { useParams } from "react-router-dom";
 
 export default class Detail extends Component {
     render() {
