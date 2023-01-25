@@ -54,5 +54,6 @@
     "fcm2" : "The process is based on raw data from consecutive daily observations of temperature, relative humidity, wind speed and precipitation over the past 24 hours (Anderson et al., 2007; Van Wagner, 1987). For the case of Madagascar, the calculations are done on Google Earth Engine (GEE), in order to have a geographical representation of the results, with some adaptations based on the most recent LST (Land Surface Temperature) available in order to have a spatial resolution of 16 km²; and daily forecast from the Global Forecast System (GFS) for the other parameters (relative humidity, wind speed and precipitation).",
     "day" : "Day",
     "date" : "Date",
-    "type" : "Type"
+    "type" : "Type",
+    "country" : "Country"
 }

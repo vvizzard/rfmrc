@@ -10,26 +10,33 @@ import {
 } from "react-leaflet";
 import { FormattedMessage } from "react-intl";
 import { withRouter } from "react-router-dom";
-// import json from '../regions/regions.json'
+import { MBTiles, mbtiles } from "leaflet-tilelayer-mbtiles-ts";
+import loader from "../img/loader.gif";
 
 class Carte extends Component {
   constructor(props) {
     super(props);
 
     this.mapRef = createRef();
-    // this.mapCenter = props.center!=null?props.center:[-6.82349, 39.26951];
-    // this.mapZoom = props.zoom!=null?props.zoom:4;
-
     this.mapDateRef = createRef();
     this.mapTypeRef = createRef();
+
+    const currentYear = parseInt(new Date().getFullYear());
+    const yearsTemp = [];
+    for (let i = currentYear; i >= 2016; i--) {
+      yearsTemp.push(i);
+    }
 
     this.state = {
       year: "2016",
       month: "01",
       regions: null,
       regionLayerReferences: null,
+      paysLayerReferences: null,
       focused: false,
       focusedRegionIndex: null,
+      focusedPaysIndex: null,
+      focusedPays: "Burundi",
       fire: [],
       tiles: {
         url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -38,20 +45,35 @@ class Carte extends Component {
       },
       isSatellite: false,
       feuxGeoJson: "",
-      // part1: "",
-      // part2: "",
-      // part3: "",
-      // part4: "",
-      // part5: "",
-      // part6: "",
-      // part7: "",
-      // part8: "",
-
       fireGeoJson: [],
+      years: yearsTemp,
+      paysAfrique: [
+        "Burundi",
+        "Djibouti",
+        "Erythree",
+        "Ethiopie",
+        "Kenya",
+        "Malawi",
+        "Mozambique",
+        "Ouganda",
+        "Rwanda",
+        "Somalie",
+        "Tanzanie",
+        "Zambie",
+        "Zimbabwe",
+      ],
+      selectedAfricanPays: null,
+      currentMbtiles: null,
+      loader: false,
     };
 
     this.handleYearChange = this.handleYearChange.bind(this);
     this.handleMonthChange = this.handleMonthChange.bind(this);
+    this.handlePaysChange = this.handlePaysChange.bind(this);
+  }
+
+  handlePaysChange(e) {
+    this.setState({ focusedPays: e.target.value });
   }
 
   handleYearChange(e) {
@@ -193,181 +215,8 @@ class Carte extends Component {
       this.state.fire[
         this.state.fire.length - 2
       ].ref.current.leafletElement.remove(); // Remove it from the map
-      // console.log("niampy");
-      // console.log(this.state.fire);
     }
-    // if(this.state.fire.length > 3) {
-    //   const temp2 = this.state.fire;
-    //   temp2.splice(0, 2);
-    //   temp2.push(newFire)
-    //   this.setState({fire:temp2});
-    //   console.log("efa niala");
-    //   console.log(this.state.fire);
-    // }
   }
-
-  // handleUpdateFireGeojson(test) {
-  //   this.setState({
-  //     feuxGeoJson: "",
-  //     part1: "",
-  //     part2: "",
-  //     part3: "",
-  //     part4: "",
-  //     part5: "",
-  //     part6: "",
-  //     part7: "",
-  //     part8: "",
-  //   });
-  //   if(test == "") test = "test";
-  //   var feux = test;
-  //   const map = this.mapRef.current.leafletElement;
-  //   const bounds = map.getBounds();
-  //   console.log('map.getZoom():');
-  //   console.log(map.getZoom());
-  //   if(map.getZoom() > 6) {
-  //     axios.get('http://app.rfmrc-ea.org/api/geojson/'+feux+'/'
-  //       +bounds._southWest.lng+'/'+bounds._northEast.lng+'/'
-  //       +bounds._southWest.lat+'/'+bounds._northEast.lat
-  //     ).then(result => {
-  //       this.setState({
-  //         feuxGeoJson : <GeoJSON
-  //           key={"feux"}
-  //           data={result.data.features}
-  //           style={() => ({
-  //             color: 'red',
-  //             weight: 1,
-  //             opacity: 1,
-  //             fillColor: "red",
-  //             fillOpacity: 0.75,
-  //           })}
-  //         />
-  //       });
-  //       console.log("geojson");
-  //       console.log(this.state.feuxGeoJson);
-  //     })
-  //   } else {
-  //     this.getGeoJson(feux, 42.5, 46.5, -14.3, -11.3).then(result=>{
-  //       this.setState({
-  //         part1 : <GeoJSON
-  //           key={"feux_11"}
-  //           data={result.features}
-  //           style={() => ({
-  //             color: 'red',
-  //             weight: 3,
-  //             opacity: 1,
-  //             fillColor: "red",
-  //             fillOpacity: 1,
-  //           })}
-  //         />
-  //       });
-  //     });
-  //     this.getGeoJson(feux, 42.5, 46.5, -17.3, -14.3).then(result=>{
-  //       this.setState({
-  //         part2 : <GeoJSON
-  //           key={"feux_12"}
-  //           data={result.features}
-  //           style={() => ({
-  //             color: 'red',
-  //             weight: 3,
-  //             opacity: 1,
-  //             fillColor: "red",
-  //             fillOpacity: 1,
-  //           })}
-  //         />
-  //       });
-  //     });
-  //     this.getGeoJson(feux, 42.5, 46.5, -20.3, -17.3).then(result=>{
-  //       this.setState({
-  //         part3 : <GeoJSON
-  //           key={"feux_13"}
-  //           data={result.features}
-  //           style={() => ({
-  //             color: 'red',
-  //             weight: 3,
-  //             opacity: 1,
-  //             fillColor: "red",
-  //             fillOpacity: 1,
-  //           })}
-  //         />
-  //       });
-  //     });
-  //     this.getGeoJson(feux, 42.5, 46.5, -26, -20.3).then(result=>{
-  //       this.setState({
-  //         part4 : <GeoJSON
-  //           key={"feux_14"}
-  //           data={result.features}
-  //           style={() => ({
-  //             color: 'red',
-  //             weight: 3,
-  //             opacity: 1,
-  //             fillColor: "red",
-  //             fillOpacity: 1,
-  //           })}
-  //         />
-  //       });
-  //     });
-  //     this.getGeoJson(feux, 46.5, 51, -14.3, -11.3).then(result=>{
-  //       this.setState({
-  //         part5 : <GeoJSON
-  //           key={"feux_15"}
-  //           data={result.features}
-  //           style={() => ({
-  //             color: 'red',
-  //             weight: 3,
-  //             opacity: 1,
-  //             fillColor: "red",
-  //             fillOpacity: 1,
-  //           })}
-  //         />
-  //       });
-  //     });
-  //     this.getGeoJson(feux, 46.5, 51, -17.3, -14.3).then(result=>{
-  //       this.setState({
-  //         part6 : <GeoJSON
-  //           key={"feux_16"}
-  //           data={result.features}
-  //           style={() => ({
-  //             color: 'red',
-  //             weight: 3,
-  //             opacity: 1,
-  //             fillColor: "red",
-  //             fillOpacity: 1,
-  //           })}
-  //         />
-  //       });
-  //     });
-  //     this.getGeoJson(feux, 46.5, 51, -20.3, -17.3).then(result=>{
-  //       this.setState({
-  //         part7 : <GeoJSON
-  //           key={"feux_17"}
-  //           data={result.features}
-  //           style={() => ({
-  //             color: 'red',
-  //             weight: 3,
-  //             opacity: 1,
-  //             fillColor: "red",
-  //             fillOpacity: 1,
-  //           })}
-  //         />
-  //       });
-  //     });
-  //     this.getGeoJson(feux, 46.5, 51, -26, -20.3).then(result=>{
-  //       this.setState({
-  //         part8 : <GeoJSON
-  //           key={"feux_18"}
-  //           data={result.features}
-  //           style={() => ({
-  //             color: 'red',
-  //             weight: 3,
-  //             opacity: 1,
-  //             fillColor: "red",
-  //             fillOpacity: 1,
-  //           })}
-  //         />
-  //       });
-  //     });
-  //   }
-  // }
 
   async getFire() {
     this.setState({
@@ -388,7 +237,7 @@ class Carte extends Component {
 
     const temp = await this.actuallyGetFire(feux, bounds, map);
 
-    if(this.props.region === "ea") {
+    if (this.props.region === "ea") {
       var test = "kenya/";
       test += this.state.month != null ? this.state.month + "_" : "";
       test += this.state.year;
@@ -461,6 +310,35 @@ class Carte extends Component {
           debut = fin;
         }
       });
+  }
+
+  // Get Fire as Tile
+  async getFireTile() {
+    if (this.state.focusedPays) {
+      const map = this.mapRef.current.leafletElement;
+      if (this.state.currentMbtiles) this.state.currentMbtiles.remove(map);
+      const dateToCheck =
+        (this.state.month ? this.state.month + "_" : "") + this.state.year;
+      this.setState({ loader: true });
+      const link =
+        "http://127.0.0.1:8000/api/mbtiles/" +
+        this.state.focusedPays +
+        "/" +
+        dateToCheck;
+      const mbtiles = new MBTiles(link, {
+        minZoom: 4,
+        maxZoom: 18,
+      });
+      mbtiles.on("databaseloaded", (ev) => {
+        this.setState({ currentMbtiles: mbtiles, loader: false });
+        this.state.currentMbtiles.addTo(map);
+      });
+
+      mbtiles.on("databaseerror", (ev) => {
+        console.info("MBTiles DB error", ev);
+        this.setState({ loader: false });
+      });
+    }
   }
 
   handleForecast(test) {
@@ -577,6 +455,7 @@ class Carte extends Component {
     }
   }
 
+  // Date GASTON
   async getGeoJsonForecast(feux, long_so, long_ne, lat_so, lat_ne) {
     // Date
     var date = this.mapDateRef.current.value;
@@ -696,8 +575,26 @@ class Carte extends Component {
     if (this.props.type == "1") {
       menu = (
         <div className="menu">
+          {this.props.region === "ea" && (
+            <div className="form-group">
+              <label htmlFor="pays">
+                <FormattedMessage id="country" /> :{" "}
+              </label>
+              <select id="pays" className="form-control">
+                {this.state.paysAfrique.map((pays) => {
+                  return (
+                    <option value={pays} key={pays + "_1"}>
+                      {pays}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+          )}
           <div className="form-group">
-            <label htmlFor="date_fire"><FormattedMessage id="date" /> </label>
+            <label htmlFor="date_fire">
+              <FormattedMessage id="date" />{" "}
+            </label>
             <input
               ref={this.mapDateRef}
               type="date"
@@ -706,17 +603,6 @@ class Carte extends Component {
               placeholder="Rechercher"
             />
           </div>
-          {/* <div className="form-group">
-          <label htmlFor="type_fire">Type : </label>
-          <select ref={this.mapTypeRef} id="type_fire" className="form-control">
-            <option value="fires_modis">MODIS</option>
-            <option value="fires_terra">TERRA</option>
-            <option value="fires_aqua">AQUA</option>
-            <option value="fires_viirs">VIIRS</option>
-            <option value="fires_viirs_snpp">VIIRS_SNPP</option>
-            <option value="fires_viirs_noaa20">VIIRS_NOAA20</option>
-          </select>
-        </div> */}
           <div className="form-group">
             <input
               onChange={() => {
@@ -725,7 +611,9 @@ class Carte extends Component {
               type="checkbox"
               id="is_satellite"
             />
-            <label htmlFor="is_satellite">. <FormattedMessage id="satellite" /></label>
+            <label htmlFor="is_satellite">
+              . <FormattedMessage id="satellite" />
+            </label>
           </div>
           <button
             onClick={() => {
@@ -740,8 +628,26 @@ class Carte extends Component {
     } else if (this.props.type == "2") {
       menu = (
         <div className="menu">
+          {this.props.region === "ea" && (
+            <div className="form-group">
+              <label htmlFor="pays">
+                <FormattedMessage id="country" /> :{" "}
+              </label>
+              <select id="pays" className="form-control">
+                {this.state.paysAfrique.map((pays) => {
+                  return (
+                    <option value={pays} key={pays + "_1"}>
+                      {pays}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+          )}
           <div className="form-group">
-            <label htmlFor="date_fire"><FormattedMessage id="date" /> </label>
+            <label htmlFor="date_fire">
+              <FormattedMessage id="date" />{" "}
+            </label>
             <input
               ref={this.mapDateRef}
               type="date"
@@ -751,7 +657,9 @@ class Carte extends Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="type_fire"><FormattedMessage id="type" /> : </label>
+            <label htmlFor="type_fire">
+              <FormattedMessage id="type" /> :{" "}
+            </label>
             <select
               ref={this.mapTypeRef}
               id="type_fire"
@@ -773,7 +681,9 @@ class Carte extends Component {
               type="checkbox"
               id="is_satellite"
             />
-            <label htmlFor="is_satellite">. <FormattedMessage id="satellite" /></label>
+            <label htmlFor="is_satellite">
+              . <FormattedMessage id="satellite" />
+            </label>
           </div>
           <button
             onClick={() => {
@@ -788,23 +698,45 @@ class Carte extends Component {
     } else if (this.props.type == "3") {
       menu = (
         <div className="menu">
+          {this.props.region === "ea" && (
+            <div className="form-group">
+              <label htmlFor="pays">
+                <FormattedMessage id="country" /> :{" "}
+              </label>
+              <select id="pays" className="form-control">
+                {this.state.paysAfrique.map((pays) => {
+                  return (
+                    <option value={pays} key={pays + "_1"}>
+                      {pays}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+          )}
           <div className="form-group">
-            <label htmlFor="type_fire"><FormattedMessage id="year" /> : </label>
+            <label htmlFor="type_fire">
+              <FormattedMessage id="year" /> :{" "}
+            </label>
             <select
               value={this.state.year}
               onChange={this.handleYearChange}
               id="type_fire"
               className="form-control"
             >
-              <option value="2016">2016</option>
-              <option value="2017">2017</option>
-              <option value="2018">2018</option>
-              <option value="2019">2019</option>
-              <option value="2020">2020</option>
+              {this.state.years.map((y) => {
+                return (
+                  <option key={y + "year"} value={y}>
+                    {y}
+                  </option>
+                );
+              })}
             </select>
           </div>
           <div className="form-group">
-            <label htmlFor="type_fire"><FormattedMessage id="month" /> : </label>
+            <label htmlFor="type_fire">
+              <FormattedMessage id="month" /> :{" "}
+            </label>
             <select
               value={this.state.month}
               onChange={this.handleMonthChange}
@@ -833,34 +765,67 @@ class Carte extends Component {
               type="checkbox"
               id="is_satellite"
             />
-            <label htmlFor="is_satellite">. <FormattedMessage id="satellite" /></label>
+            <label htmlFor="is_satellite">
+              . <FormattedMessage id="satellite" />
+            </label>
           </div>
-          <button
-            onClick={() => {
-              this.getFire();
-            }}
-            className="btn btn-primary"
-          >
-            <FormattedMessage id="launch" />
-          </button>
+          {this.props.region === "ea" ? (
+            <button
+              onClick={() => {
+                this.getFireTile();
+              }}
+              className="btn btn-primary"
+            >
+              <FormattedMessage id="launch" />
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                this.getFire();
+              }}
+              className="btn btn-primary"
+            >
+              <FormattedMessage id="launch" />
+            </button>
+          )}
         </div>
       );
     } else {
       menu = (
         <div className="menu">
+          {this.props.region === "ea" && (
+            <div className="form-group">
+              <label htmlFor="pays">
+                <FormattedMessage id="country" /> :{" "}
+              </label>
+              <select id="pays" className="form-control">
+                {this.state.paysAfrique.map((pays) => {
+                  return (
+                    <option value={pays} key={pays + "_1"}>
+                      {pays}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+          )}
           <div className="form-group">
-            <label htmlFor="type_fire"><FormattedMessage id="year" /> : </label>
+            <label htmlFor="type_fire">
+              <FormattedMessage id="year" /> :{" "}
+            </label>
             <select
               value={this.state.year}
               onChange={this.handleYearChange}
               id="type_fire"
               className="form-control"
             >
-              <option value="2016">2016</option>
-              <option value="2017">2017</option>
-              <option value="2018">2018</option>
-              <option value="2019">2019</option>
-              <option value="2020">2020</option>
+              {this.state.years.map((y) => {
+                return (
+                  <option key={y + "year"} value={y}>
+                    {y}
+                  </option>
+                );
+              })}
             </select>
           </div>
           <div className="form-group">
@@ -871,16 +836,29 @@ class Carte extends Component {
               type="checkbox"
               id="is_satellite"
             />
-            <label htmlFor="is_satellite">. <FormattedMessage id="satellite" /></label>
+            <label htmlFor="is_satellite">
+              . <FormattedMessage id="satellite" />
+            </label>
           </div>
-          <button
-            onClick={() => {
-              this.getFire();
-            }}
-            className="btn btn-primary"
-          >
-            <FormattedMessage id="launch" />
-          </button>
+          {this.props.region === "ea" ? (
+            <button
+              onClick={() => {
+                this.getFireTile();
+              }}
+              className="btn btn-primary"
+            >
+              <FormattedMessage id="launch" />
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                this.getFire();
+              }}
+              className="btn btn-primary"
+            >
+              <FormattedMessage id="launch" />
+            </button>
+          )}
         </div>
       );
     }
@@ -892,7 +870,21 @@ class Carte extends Component {
           <section className="carte">
             <div className="row">
               <div className="col-md-12 map-div">
-                {menu}
+                {this.state.loader ? (
+                  <img
+                    src={loader}
+                    style={{
+                      position: "absolute",
+                      top: 90,
+                      left: 10,
+                      zIndex: 999,
+                      opacity: 0.95,
+                      height: 60,
+                    }}
+                  />
+                ) : (
+                  menu
+                )}
                 <Map
                   center={this.props.center}
                   zoom={this.props.zoom}
@@ -912,16 +904,6 @@ class Carte extends Component {
                   ))}
                   {this.state.regions}
                   {this.state.feuxGeoJson}
-                  {/* <div>
-                  {this.state.part1}
-                  {this.state.part2}
-                  {this.state.part3}
-                  {this.state.part4}
-                  {this.state.part5}
-                  {this.state.part6}
-                  {this.state.part7}
-                  {this.state.part8}
-                  </div> */}
                   {this.state.fireGeoJson.map((feux) => (
                     <GeoJSON
                       key={feux.key}
@@ -935,7 +917,6 @@ class Carte extends Component {
                       })}
                     />
                   ))}
-                  {/* {this.state.fireGeoJson} */}
                 </Map>
               </div>
             </div>
