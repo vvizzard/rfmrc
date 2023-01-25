@@ -520,36 +520,40 @@ class Carte extends Component {
         fillOpacity: 0,
       };
 
-      this.props.regionJson.then((data) => {
-        const layers = [];
-        const refs = [];
+      this.props.regionJson().then((data) => {
+        if (this.props.region !== "ea") {
+          const layers = [];
+          const refs = [];
 
-        for (let i = 0; i < data.length; i++) {
-          const reference = createRef();
-          refs.push(reference);
+          for (let i = 0; i < data.length; i++) {
+            const reference = createRef();
+            refs.push(reference);
 
-          layers.push(
-            <GeoJSON
-              ref={reference}
-              key={"geojson" + i}
-              data={data[i]}
-              style={() => layerStyle}
-              onmouseover={() => {
-                this.handleMapMouseOver(i);
-              }}
-              onmouseout={() => {
-                this.handleMapMouseOut(i);
-              }}
-              onclick={() => {
-                this.focusOnRegion(i);
-              }}
-            ></GeoJSON>
-          );
+            layers.push(
+              <GeoJSON
+                ref={reference}
+                key={"geojson" + i}
+                data={data[i]}
+                style={() => layerStyle}
+                onmouseover={() => {
+                  this.handleMapMouseOver(i);
+                }}
+                onmouseout={() => {
+                  this.handleMapMouseOut(i);
+                }}
+                onclick={() => {
+                  this.focusOnRegion(i);
+                }}
+              ></GeoJSON>
+            );
+          }
+          this.setState({
+            regions: layers,
+            regionLayerReferences: refs,
+          });
+        } else {
+          
         }
-        this.setState({
-          regions: layers,
-          regionLayerReferences: refs,
-        });
       });
     }
   }
@@ -580,7 +584,7 @@ class Carte extends Component {
               <label htmlFor="pays">
                 <FormattedMessage id="country" /> :{" "}
               </label>
-              <select id="pays" className="form-control">
+              <select onChange={this.handlePaysChange} id="pays" className="form-control">
                 {this.state.paysAfrique.map((pays) => {
                   return (
                     <option value={pays} key={pays + "_1"}>
@@ -633,7 +637,7 @@ class Carte extends Component {
               <label htmlFor="pays">
                 <FormattedMessage id="country" /> :{" "}
               </label>
-              <select id="pays" className="form-control">
+              <select onChange={this.handlePaysChange} id="pays" className="form-control">
                 {this.state.paysAfrique.map((pays) => {
                   return (
                     <option value={pays} key={pays + "_1"}>
@@ -703,7 +707,7 @@ class Carte extends Component {
               <label htmlFor="pays">
                 <FormattedMessage id="country" /> :{" "}
               </label>
-              <select id="pays" className="form-control">
+              <select onChange={this.handlePaysChange} id="pays" className="form-control">
                 {this.state.paysAfrique.map((pays) => {
                   return (
                     <option value={pays} key={pays + "_1"}>
@@ -798,7 +802,7 @@ class Carte extends Component {
               <label htmlFor="pays">
                 <FormattedMessage id="country" /> :{" "}
               </label>
-              <select id="pays" className="form-control">
+              <select onChange={this.handlePaysChange} id="pays" className="form-control">
                 {this.state.paysAfrique.map((pays) => {
                   return (
                     <option value={pays} key={pays + "_1"}>
