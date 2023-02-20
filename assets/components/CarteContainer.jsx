@@ -237,23 +237,6 @@ class CarteContainer extends Component {
     });
   }
 
-  handleMapMouseOut(index) {
-    const element = this.state.regionLayerReferences[index];
-    const layer = element.current.leafletElement;
-
-    if (!this.state.focused || this.state.focusedRegionIndex != index) {
-      layer.setStyle({
-        color: "#4a83ec",
-        weight: 0.25,
-        fillColor: "#1a1d62",
-        fillOpacity: 0,
-      });
-    }
-  }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   console.log(this.props.regionJson);
-  // }
 
   render() {
     const histories = [

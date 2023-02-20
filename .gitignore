@@ -21,3 +21,9 @@
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
+
+###> for test purpose ###
+/assets/layers/
+/assets/components/CarteTemp.jsx
+/assets/MainOld.jsx
+###< for test purpose ###

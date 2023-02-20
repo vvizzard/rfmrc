@@ -12,6 +12,7 @@ import { FormattedMessage } from "react-intl";
 import { withRouter } from "react-router-dom";
 import { MBTiles, mbtiles } from "leaflet-tilelayer-mbtiles-ts";
 import loader from "../img/loader.gif";
+import moment from 'moment';
 
 class Carte extends Component {
   constructor(props) {
@@ -31,6 +32,7 @@ class Carte extends Component {
       year: "2016",
       month: "01",
       regions: null,
+      pays: null,
       regionLayerReferences: null,
       paysLayerReferences: null,
       focused: false,
@@ -72,8 +74,21 @@ class Carte extends Component {
     this.handlePaysChange = this.handlePaysChange.bind(this);
   }
 
-  handlePaysChange(e) {
-    this.setState({ focusedPays: e.target.value });
+  async handlePaysChange(e) {
+    this.setState({
+      focusedPays: e.target.value,
+      // selectedAfricanPays: this.state.regions[e.target.value]
+      selectedAfricanPays: null,
+    });
+    this.setState({
+      selectedAfricanPays: this.state.regions[e.target.value],
+    });
+
+    const element = await this.state.regionLayerReferences[e.target.value];
+    console.warn(element);
+    const layer = element.current.leafletElement;
+    const map = this.mapRef.current.leafletElement;
+    map.fitBounds(layer.getBounds());
   }
 
   handleYearChange(e) {
@@ -114,7 +129,7 @@ class Carte extends Component {
   }
 
   handleMapMouseOver(index) {
-    const element = this.state.regionLayerReferences[index];
+    const element = this.state.regionLayerReferences.madagascar[index];
     const layer = element.current.leafletElement;
 
     if (!this.state.focused || this.state.focusedRegionIndex != index) {
@@ -128,7 +143,7 @@ class Carte extends Component {
   }
 
   handleMapMouseOut(index) {
-    const element = this.state.regionLayerReferences[index];
+    const element = this.state.regionLayerReferences.madagascar[index];
     const layer = element.current.leafletElement;
 
     if (!this.state.focused || this.state.focusedRegionIndex != index) {
@@ -142,8 +157,12 @@ class Carte extends Component {
   }
 
   focusOnRegion(index) {
-    for (let i = 0; i < this.state.regionLayerReferences.length; i++) {
-      const element = this.state.regionLayerReferences[i];
+    for (
+      let i = 0;
+      i < this.state.regionLayerReferences.madagascar.length;
+      i++
+    ) {
+      const element = this.state.regionLayerReferences.madagascar[i];
       const layer = element.current.leafletElement;
       if (index == i) {
         layer.setStyle({
@@ -459,20 +478,25 @@ class Carte extends Component {
   async getGeoJsonForecast(feux, long_so, long_ne, lat_so, lat_ne) {
     // Date
     var date = this.mapDateRef.current.value;
-    console.log(date);
     if (!date) date = "2020-01-01";
-    var dateTemp = date.split("-");
-    date = dateTemp[1] + "_" + dateTemp[2] + "_" + dateTemp[0];
-
+    const dTemp = new Date(date)
+    dTemp.setDate(dTemp.getDate() - 1)
+    date = moment(dTemp).format('MM_DD_YYYY')
+    console.warn(date)
+    // var dateTemp = date.split("-");
+    // date = dateTemp[1] + "_" + dateTemp[2] + "_" + dateTemp[0];
+    const link =
+      "http://app.rfmrc-ea.org/api/forecast_geojson/FWI_" +
+      date +
+      "/" +
+      feux +
+      ".geojson" +
+      (this.props.region === "ea" ? "/" + this.state.focusedPays : "/Madagascar");
+    console.warn(link);
     try {
       const response = await axios({
         method: "get",
-        url:
-          "http://app.rfmrc-ea.org/api/forecast_geojson/FWI_" +
-          date +
-          "/" +
-          feux +
-          ".geojson",
+        url: link,
       });
       return await Promise.resolve(response.data);
     } catch (error) {
@@ -504,14 +528,12 @@ class Carte extends Component {
   //     })
   // }
 
-  componentDidUpdate(prevProps, prevState) {
+  async componentDidMount(prevProps, prevState) {
     if (this.props.type == "4") {
       this.state.month = null;
     }
 
     if (this.state.regions === null && this.props.regionJson) {
-      console.log(this.props.regionJson);
-
       const layerStyle = {
         color: "#4a83ec",
         opacity: 0.2,
@@ -520,12 +542,15 @@ class Carte extends Component {
         fillOpacity: 0,
       };
 
-      this.props.regionJson().then((data) => {
-        if (this.props.region !== "ea") {
+      const data = await this.props.regionJson;
+      console.warn(data);
+      let reg = {};
+      let ref = {};
+      for (const [key, value] of Object.entries(data)) {
+        if (key === "madagascar") {
           const layers = [];
           const refs = [];
-
-          for (let i = 0; i < data.length; i++) {
+          for (let i = 0; i < value.data.length; i++) {
             const reference = createRef();
             refs.push(reference);
 
@@ -533,7 +558,7 @@ class Carte extends Component {
               <GeoJSON
                 ref={reference}
                 key={"geojson" + i}
-                data={data[i]}
+                data={value.data[i]}
                 style={() => layerStyle}
                 onmouseover={() => {
                   this.handleMapMouseOver(i);
@@ -547,14 +572,34 @@ class Carte extends Component {
               ></GeoJSON>
             );
           }
-          this.setState({
-            regions: layers,
-            regionLayerReferences: refs,
-          });
+          reg.madagascar = layers;
+          ref.madagascar = refs;
         } else {
-          
+          const reference = createRef();
+          ref[key] = reference;
+          reg[key] = (
+            <GeoJSON
+              ref={reference}
+              key={"AfricaGeojson" + key}
+              data={value.data}
+              style={() => {
+                return { color: "#4a83ec", weight: 2, opacity: 1 };
+              }}
+            ></GeoJSON>
+          );
         }
+      }
+      this.setState({
+        regions: reg,
+        regionLayerReferences: ref,
       });
+
+      if (this.props.region !== "madagascar") {
+        console.warn("tafa ea");
+        this.setState({
+          selectedAfricanPays: this.state.regions[this.state.focusedPays],
+        });
+      }
     }
   }
 
@@ -584,7 +629,11 @@ class Carte extends Component {
               <label htmlFor="pays">
                 <FormattedMessage id="country" /> :{" "}
               </label>
-              <select onChange={this.handlePaysChange} id="pays" className="form-control">
+              <select
+                onChange={this.handlePaysChange}
+                id="pays"
+                className="form-control"
+              >
                 {this.state.paysAfrique.map((pays) => {
                   return (
                     <option value={pays} key={pays + "_1"}>
@@ -637,7 +686,11 @@ class Carte extends Component {
               <label htmlFor="pays">
                 <FormattedMessage id="country" /> :{" "}
               </label>
-              <select onChange={this.handlePaysChange} id="pays" className="form-control">
+              <select
+                onChange={this.handlePaysChange}
+                id="pays"
+                className="form-control"
+              >
                 {this.state.paysAfrique.map((pays) => {
                   return (
                     <option value={pays} key={pays + "_1"}>
@@ -707,7 +760,11 @@ class Carte extends Component {
               <label htmlFor="pays">
                 <FormattedMessage id="country" /> :{" "}
               </label>
-              <select onChange={this.handlePaysChange} id="pays" className="form-control">
+              <select
+                onChange={this.handlePaysChange}
+                id="pays"
+                className="form-control"
+              >
                 {this.state.paysAfrique.map((pays) => {
                   return (
                     <option value={pays} key={pays + "_1"}>
@@ -802,7 +859,11 @@ class Carte extends Component {
               <label htmlFor="pays">
                 <FormattedMessage id="country" /> :{" "}
               </label>
-              <select onChange={this.handlePaysChange} id="pays" className="form-control">
+              <select
+                onChange={this.handlePaysChange}
+                id="pays"
+                className="form-control"
+              >
                 {this.state.paysAfrique.map((pays) => {
                   return (
                     <option value={pays} key={pays + "_1"}>
@@ -906,7 +967,7 @@ class Carte extends Component {
                       ref={layer.ref}
                     />
                   ))}
-                  {this.state.regions}
+                  {this.state.regions && this.state.regions.madagascar}
                   {this.state.feuxGeoJson}
                   {this.state.fireGeoJson.map((feux) => (
                     <GeoJSON
@@ -921,6 +982,7 @@ class Carte extends Component {
                       })}
                     />
                   ))}
+                  {this.state.selectedAfricanPays}
                 </Map>
               </div>
             </div>
