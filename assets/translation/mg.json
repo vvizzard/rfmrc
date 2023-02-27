@@ -55,5 +55,14 @@
     "day" : "Andro",
     "date" : "Daty",
     "type" : "Karazana",
-    "country" : "Firenena"
+    "country" : "Firenena",
+
+    "extreme" : "Mihoa-pampana",
+    "very_high" : "Tena avo",
+    "important" : "Ambony",
+    "moderate" : "Antonony",
+    "low" : "Ambany",
+
+    "active_fire2": "Afo mirehitra",
+    "burned_area": "Faritra may"
 }
