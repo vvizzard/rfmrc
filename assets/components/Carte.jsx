@@ -38,7 +38,8 @@ class Carte extends Component {
       focused: false,
       focusedRegionIndex: null,
       focusedPaysIndex: null,
-      focusedPays: "Burundi",
+      // focusedPays: "Burundi",
+      focusedPays: "Erythree",
       fire: [],
       tiles: {
         url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -50,19 +51,19 @@ class Carte extends Component {
       fireGeoJson: [],
       years: yearsTemp,
       paysAfrique: [
-        "Burundi",
-        "Djibouti",
+        // "Burundi",
+        // "Djibouti",
         "Erythree",
         "Ethiopie",
         "Kenya",
-        "Malawi",
-        "Mozambique",
+        // "Malawi",
+        // "Mozambique",
         "Ouganda",
-        "Rwanda",
+        // "Rwanda",
         "Somalie",
-        "Tanzanie",
-        "Zambie",
-        "Zimbabwe",
+        // "Tanzanie",
+        // "Zambie",
+        // "Zimbabwe",
       ],
       selectedAfricanPays: null,
       currentMbtiles: null,
@@ -529,6 +530,7 @@ class Carte extends Component {
   // }
 
   async componentDidMount(prevProps, prevState) {
+    this.setState({loader: true})
     if (this.props.type == "4") {
       this.state.month = null;
     }
@@ -592,6 +594,7 @@ class Carte extends Component {
       this.setState({
         regions: reg,
         regionLayerReferences: ref,
+        loader: false
       });
 
       if (this.props.region !== "madagascar") {
@@ -620,6 +623,7 @@ class Carte extends Component {
     ];
 
     var menu = "";
+    var legend = "";
 
     if (this.props.type == "1") {
       menu = (
@@ -678,6 +682,31 @@ class Carte extends Component {
           </button>
         </div>
       );
+      legend = (
+        <div className="legend">
+          <h4><FormattedMessage id="legend" /></h4>
+          <div className="line">
+            <div className="box" style={{ backgroundColor: 'red' }}></div>
+            <span><FormattedMessage id="extreme" /></span>
+          </div>
+          <div className="line">
+            <div className="box" style={{ backgroundColor: 'orange' }}></div>
+            <span><FormattedMessage id="very_high" /></span>
+          </div>
+          <div className="line">
+            <div className="box" style={{ backgroundColor: 'yellow' }}></div>
+            <span><FormattedMessage id="important" /></span>
+          </div>
+          <div className="line">
+            <div className="box" style={{ backgroundColor: 'green' }}></div>
+            <span><FormattedMessage id="moderate" /></span>
+          </div>
+          <div className="line">
+            <div className="box" style={{ backgroundColor: 'gray' }}></div>
+            <span><FormattedMessage id="low" /></span>
+          </div>
+        </div>
+      )
     } else if (this.props.type == "2") {
       menu = (
         <div className="menu">
@@ -752,6 +781,15 @@ class Carte extends Component {
           </button>
         </div>
       );
+      legend = (
+        <div className="legend">
+          <h4><FormattedMessage id="legend" /></h4>
+          <div className="line">
+            <div className="box" style={{ backgroundColor: 'red' }}></div>
+            <span><FormattedMessage id="active_fire2" /></span>
+          </div>
+        </div>
+      )
     } else if (this.props.type == "3") {
       menu = (
         <div className="menu">
@@ -851,6 +889,15 @@ class Carte extends Component {
           )}
         </div>
       );
+      legend = (
+        <div className="legend">
+          <h4><FormattedMessage id="legend" /></h4>
+          <div className="line">
+            <div className="box" style={{ backgroundColor: 'red' }}></div>
+            <span><FormattedMessage id="burned_area" /></span>
+          </div>
+        </div>
+      )
     } else {
       menu = (
         <div className="menu">
@@ -926,6 +973,15 @@ class Carte extends Component {
           )}
         </div>
       );
+      legend = (
+        <div className="legend">
+          <h4><FormattedMessage id="legend" /></h4>
+          <div className="line">
+            <div className="box" style={{ backgroundColor: 'red' }}></div>
+            <span><FormattedMessage id="burned_area" /></span>
+          </div>
+        </div>
+      )
     }
 
     return (
@@ -950,6 +1006,7 @@ class Carte extends Component {
                 ) : (
                   menu
                 )}
+                {legend}
                 <Map
                   center={this.props.center}
                   zoom={this.props.zoom}

@@ -79,14 +79,14 @@ export default function Main() {
         method: "get",
         url: "https://brouillon.llanddev.org/region.php",
       });
-      layers.Burundi = await axios({
-        method: "get",
-        url: "https://brouillon.llanddev.org/countryAfrica.php?pays=Burundi",
-      });
-      layers.Djibouti = await axios({
-        method: "get",
-        url: "https://brouillon.llanddev.org/countryAfrica.php?pays=Djibouti",
-      });
+      // layers.Burundi = await axios({
+      //   method: "get",
+      //   url: "https://brouillon.llanddev.org/countryAfrica.php?pays=Burundi",
+      // });
+      // layers.Djibouti = await axios({
+      //   method: "get",
+      //   url: "https://brouillon.llanddev.org/countryAfrica.php?pays=Djibouti",
+      // });
       layers.Erythree = await axios({
         method: "get",
         url: "https://brouillon.llanddev.org/countryAfrica.php?pays=Erythree",
@@ -99,38 +99,38 @@ export default function Main() {
         method: "get",
         url: "https://brouillon.llanddev.org/countryAfrica.php?pays=Kenya",
       });
-      layers.Malawi = await axios({
-        method: "get",
-        url: "https://brouillon.llanddev.org/countryAfrica.php?pays=Malawi",
-      });
-      layers.Mozambique = await axios({
-        method: "get",
-        url: "https://brouillon.llanddev.org/countryAfrica.php?pays=Mozambique",
-      });
+      // layers.Malawi = await axios({
+      //   method: "get",
+      //   url: "https://brouillon.llanddev.org/countryAfrica.php?pays=Malawi",
+      // });
+      // layers.Mozambique = await axios({
+      //   method: "get",
+      //   url: "https://brouillon.llanddev.org/countryAfrica.php?pays=Mozambique",
+      // });
       layers.Ouganda = await axios({
         method: "get",
         url: "https://brouillon.llanddev.org/countryAfrica.php?pays=Ouganda",
       });
-      layers.Rwanda = await axios({
-        method: "get",
-        url: "https://brouillon.llanddev.org/countryAfrica.php?pays=Rwanda",
-      });
+      // layers.Rwanda = await axios({
+      //   method: "get",
+      //   url: "https://brouillon.llanddev.org/countryAfrica.php?pays=Rwanda",
+      // });
       layers.Somalie = await axios({
         method: "get",
         url: "https://brouillon.llanddev.org/countryAfrica.php?pays=Somalie",
       });
-      layers.Tanzanie = await axios({
-        method: "get",
-        url: "https://brouillon.llanddev.org/countryAfrica.php?pays=Tanzanie",
-      });
-      layers.Zambie = await axios({
-        method: "get",
-        url: "https://brouillon.llanddev.org/countryAfrica.php?pays=Zambie",
-      });
-      layers.Zimbabwe = await axios({
-        method: "get",
-        url: "https://brouillon.llanddev.org/countryAfrica.php?pays=Zimbabwe",
-      });
+      // layers.Tanzanie = await axios({
+      //   method: "get",
+      //   url: "https://brouillon.llanddev.org/countryAfrica.php?pays=Tanzanie",
+      // });
+      // layers.Zambie = await axios({
+      //   method: "get",
+      //   url: "https://brouillon.llanddev.org/countryAfrica.php?pays=Zambie",
+      // });
+      // layers.Zimbabwe = await axios({
+      //   method: "get",
+      //   url: "https://brouillon.llanddev.org/countryAfrica.php?pays=Zimbabwe",
+      // });
       return await Promise.resolve(layers);
     } catch (error) {
       console.log(error);

@@ -363,6 +363,22 @@
     border-radius: 0px;
 }
 
+.carte .legend {
+    position: absolute;
+    z-index: 999;
+    bottom: 18px;
+    right: 1em;
+    background-color: #ffffffb3;
+    padding: 0.5em;
+}
+
+.carte .legend .line .box {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    margin-right: 0.5em;
+}
+
 .map .shadow {
     box-shadow: none!important;
 }

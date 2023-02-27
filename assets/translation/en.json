@@ -55,5 +55,14 @@
     "day" : "Day",
     "date" : "Date",
     "type" : "Type",
-    "country" : "Country"
+    "country" : "Country",
+
+    "extreme" : "Extreme",
+    "very_high" : "Very high",
+    "important" : "Important",
+    "moderate" : "Moderate",
+    "low" : "Low",
+
+    "active_fire2": "Active fire",
+    "burned_area": "Burned area"
 }
