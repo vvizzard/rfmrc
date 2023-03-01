@@ -12,7 +12,8 @@ import { FormattedMessage } from "react-intl";
 import { withRouter } from "react-router-dom";
 import { MBTiles, mbtiles } from "leaflet-tilelayer-mbtiles-ts";
 import loader from "../img/loader.gif";
-import moment from 'moment';
+import moment from "moment";
+import { faTshirt } from "@fortawesome/free-solid-svg-icons";
 
 class Carte extends Component {
   constructor(props) {
@@ -38,8 +39,8 @@ class Carte extends Component {
       focused: false,
       focusedRegionIndex: null,
       focusedPaysIndex: null,
-      // focusedPays: "Burundi",
-      focusedPays: "Erythree",
+      focusedPays: "Burundi",
+      // focusedPays: "Erythree",
       fire: [],
       tiles: {
         url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -51,6 +52,21 @@ class Carte extends Component {
       fireGeoJson: [],
       years: yearsTemp,
       paysAfrique: [
+        "Burundi",
+        "Djibouti",
+        "Erythree",
+        "Ethiopie",
+        "Kenya",
+        "Malawi",
+        "Mozambique",
+        "Ouganda",
+        "Rwanda",
+        "Somalie",
+        "Tanzanie",
+        "Zambie",
+        "Zimbabwe",
+      ],
+      paysAfriqueTemp: [
         // "Burundi",
         // "Djibouti",
         "Erythree",
@@ -341,7 +357,7 @@ class Carte extends Component {
         (this.state.month ? this.state.month + "_" : "") + this.state.year;
       this.setState({ loader: true });
       const link =
-        "http://127.0.0.1:8000/api/mbtiles/" +
+        "http://app.rfmrc-ea.org/api/mbtiles/" +
         this.state.focusedPays +
         "/" +
         dateToCheck;
@@ -480,10 +496,10 @@ class Carte extends Component {
     // Date
     var date = this.mapDateRef.current.value;
     if (!date) date = "2020-01-01";
-    const dTemp = new Date(date)
-    dTemp.setDate(dTemp.getDate() - 1)
-    date = moment(dTemp).format('MM_DD_YYYY')
-    console.warn(date)
+    const dTemp = new Date(date);
+    dTemp.setDate(dTemp.getDate() - 1);
+    date = moment(dTemp).format("MM_DD_YYYY");
+    console.warn(date);
     // var dateTemp = date.split("-");
     // date = dateTemp[1] + "_" + dateTemp[2] + "_" + dateTemp[0];
     const link =
@@ -492,7 +508,9 @@ class Carte extends Component {
       "/" +
       feux +
       ".geojson" +
-      (this.props.region === "ea" ? "/" + this.state.focusedPays : "/Madagascar");
+      (this.props.region === "ea"
+        ? "/" + this.state.focusedPays
+        : "/Madagascar");
     console.warn(link);
     try {
       const response = await axios({
@@ -530,9 +548,12 @@ class Carte extends Component {
   // }
 
   async componentDidMount(prevProps, prevState) {
-    this.setState({loader: true})
+    this.setState({ loader: true });
     if (this.props.type == "4") {
       this.state.month = null;
+    }
+    if (this.props.type == "1") {
+      this.state.focusedPays = "Erythree";
     }
 
     if (this.state.regions === null && this.props.regionJson) {
@@ -585,7 +606,12 @@ class Carte extends Component {
               key={"AfricaGeojson" + key}
               data={value.data}
               style={() => {
-                return { color: "#4a83ec", weight: 2, opacity: 1 };
+                return {
+                  color: "#4a83ec",
+                  weight: 2,
+                  opacity: 1,
+                  fillOpacity: 0,
+                };
               }}
             ></GeoJSON>
           );
@@ -594,7 +620,7 @@ class Carte extends Component {
       this.setState({
         regions: reg,
         regionLayerReferences: ref,
-        loader: false
+        loader: false,
       });
 
       if (this.props.region !== "madagascar") {
@@ -627,7 +653,7 @@ class Carte extends Component {
 
     if (this.props.type == "1") {
       menu = (
-        <div className="menu">
+        <div className={"menu " + (this.state.loader ? "hidden" : "")}>
           {this.props.region === "ea" && (
             <div className="form-group">
               <label htmlFor="pays">
@@ -638,9 +664,13 @@ class Carte extends Component {
                 id="pays"
                 className="form-control"
               >
-                {this.state.paysAfrique.map((pays) => {
+                {this.state.paysAfriqueTemp.map((pays) => {
                   return (
-                    <option value={pays} key={pays + "_1"}>
+                    <option
+                      value={pays}
+                      selected={pays === this.state.focusedPays}
+                      key={pays + "_1"}
+                    >
                       {pays}
                     </option>
                   );
@@ -684,32 +714,44 @@ class Carte extends Component {
       );
       legend = (
         <div className="legend">
-          <h4><FormattedMessage id="legend" /></h4>
+          <h4>
+            <FormattedMessage id="legend" />
+          </h4>
           <div className="line">
-            <div className="box" style={{ backgroundColor: 'red' }}></div>
-            <span><FormattedMessage id="extreme" /></span>
+            <div className="box" style={{ backgroundColor: "red" }}></div>
+            <span>
+              <FormattedMessage id="extreme" />
+            </span>
           </div>
           <div className="line">
-            <div className="box" style={{ backgroundColor: 'orange' }}></div>
-            <span><FormattedMessage id="very_high" /></span>
+            <div className="box" style={{ backgroundColor: "orange" }}></div>
+            <span>
+              <FormattedMessage id="very_high" />
+            </span>
           </div>
           <div className="line">
-            <div className="box" style={{ backgroundColor: 'yellow' }}></div>
-            <span><FormattedMessage id="important" /></span>
+            <div className="box" style={{ backgroundColor: "yellow" }}></div>
+            <span>
+              <FormattedMessage id="important" />
+            </span>
           </div>
           <div className="line">
-            <div className="box" style={{ backgroundColor: 'green' }}></div>
-            <span><FormattedMessage id="moderate" /></span>
+            <div className="box" style={{ backgroundColor: "green" }}></div>
+            <span>
+              <FormattedMessage id="moderate" />
+            </span>
           </div>
           <div className="line">
-            <div className="box" style={{ backgroundColor: 'gray' }}></div>
-            <span><FormattedMessage id="low" /></span>
+            <div className="box" style={{ backgroundColor: "gray" }}></div>
+            <span>
+              <FormattedMessage id="low" />
+            </span>
           </div>
         </div>
-      )
+      );
     } else if (this.props.type == "2") {
       menu = (
-        <div className="menu">
+        <div className={"menu " + (this.state.loader ? "hidden" : "")}>
           {this.props.region === "ea" && (
             <div className="form-group">
               <label htmlFor="pays">
@@ -783,16 +825,20 @@ class Carte extends Component {
       );
       legend = (
         <div className="legend">
-          <h4><FormattedMessage id="legend" /></h4>
+          <h4>
+            <FormattedMessage id="legend" />
+          </h4>
           <div className="line">
-            <div className="box" style={{ backgroundColor: 'red' }}></div>
-            <span><FormattedMessage id="active_fire2" /></span>
+            <div className="box" style={{ backgroundColor: "red" }}></div>
+            <span>
+              <FormattedMessage id="active_fire2" />
+            </span>
           </div>
         </div>
-      )
+      );
     } else if (this.props.type == "3") {
       menu = (
-        <div className="menu">
+        <div className={"menu " + (this.state.loader ? "hidden" : "")}>
           {this.props.region === "ea" && (
             <div className="form-group">
               <label htmlFor="pays">
@@ -891,16 +937,20 @@ class Carte extends Component {
       );
       legend = (
         <div className="legend">
-          <h4><FormattedMessage id="legend" /></h4>
+          <h4>
+            <FormattedMessage id="legend" />
+          </h4>
           <div className="line">
-            <div className="box" style={{ backgroundColor: 'red' }}></div>
-            <span><FormattedMessage id="burned_area" /></span>
+            <div className="box" style={{ backgroundColor: "red" }}></div>
+            <span>
+              <FormattedMessage id="burned_area" />
+            </span>
           </div>
         </div>
-      )
+      );
     } else {
       menu = (
-        <div className="menu">
+        <div className={"menu " + (this.state.loader ? "hidden" : "")}>
           {this.props.region === "ea" && (
             <div className="form-group">
               <label htmlFor="pays">
@@ -975,13 +1025,17 @@ class Carte extends Component {
       );
       legend = (
         <div className="legend">
-          <h4><FormattedMessage id="legend" /></h4>
+          <h4>
+            <FormattedMessage id="legend" />
+          </h4>
           <div className="line">
-            <div className="box" style={{ backgroundColor: 'red' }}></div>
-            <span><FormattedMessage id="burned_area" /></span>
+            <div className="box" style={{ backgroundColor: "red" }}></div>
+            <span>
+              <FormattedMessage id="burned_area" />
+            </span>
           </div>
         </div>
-      )
+      );
     }
 
     return (
@@ -991,7 +1045,7 @@ class Carte extends Component {
           <section className="carte">
             <div className="row">
               <div className="col-md-12 map-div">
-                {this.state.loader ? (
+                {this.state.loader && (
                   <img
                     src={loader}
                     style={{
@@ -1003,9 +1057,8 @@ class Carte extends Component {
                       height: 60,
                     }}
                   />
-                ) : (
-                  menu
                 )}
+                {menu}
                 {legend}
                 <Map
                   center={this.props.center}
