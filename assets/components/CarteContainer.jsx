@@ -224,13 +224,13 @@ class CarteContainer extends Component {
 
     this.setState({
       headerLink: (
-        <div className="centered p">
+        <div id="header_link" className="centered p">
           {first} &nbsp;| &nbsp; {second} &nbsp;| &nbsp; {third}&nbsp; | &nbsp;{" "}
           {fourth}
         </div>
       ),
       regionLink: (
-        <div className="centered p">
+        <div id="region_link" className="centered p">
           {rfirst} &nbsp;| &nbsp; {rsecond}
         </div>
       ),
@@ -257,7 +257,7 @@ class CarteContainer extends Component {
     return (
       <div className="entry-content-wrapper clearfix standard-content">
         <header className="entry-content-header">
-          <h1 className="post-title entry-title">
+          <h1 className="post-title entry-title custom-title">
             <a
               rel="bookmark"
               title="Permanent Link: Global Fire Early Warning System"
@@ -270,12 +270,12 @@ class CarteContainer extends Component {
             <div className="pf-content">
               {this.state.headerLink}
 
-              <h3 className="centered">
+              <h3 id="app_title" className="centered">
                 <strong>{this.state.appTitle}</strong>
               </h3>
               <div className="centered p">{this.state.regionLink}</div>
 
-              <div className="centered p">
+              <div id="caution" className="centered p">
                 <strong>
                   <span>
                   <FormattedMessage id="nb" />{" "}
@@ -284,7 +284,7 @@ class CarteContainer extends Component {
                 </strong>
               </div>
 
-              <h2 className="centered">{this.state.appRegion}</h2>
+              <h2 id="app_region" className="centered">{this.state.appRegion}</h2>
               <div>
                 <Carte
                   regionJson={this.props.regionJson}
