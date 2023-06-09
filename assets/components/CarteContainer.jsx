@@ -17,7 +17,7 @@ class CarteContainer extends Component {
       center: null,
       zoom: null,
       description: "",
-      regionActive: "madagascar"
+      regionActive: "madagascar",
     };
   }
 
@@ -43,7 +43,7 @@ class CarteContainer extends Component {
     var rsecond = null;
 
     var appActive = "one_day_forecast";
-    this.setState({regionActive : "madagascar"});
+    this.setState({ regionActive: region == 2 ? "ea" : "madagascar" });
 
     if (active == 1) {
       first = (
@@ -55,46 +55,90 @@ class CarteContainer extends Component {
         appTitle: <FormattedMessage id="forecast" />,
         description: (
           <div className="desc">
-            <h3><FormattedMessage id="methodology" /></h3>
-            <p><FormattedMessage id="fcm1" /></p>
+            <h3>
+              <FormattedMessage id="methodology" />
+            </h3>
+            <p>
+              <FormattedMessage id="fcm1" />
+            </p>
             <div className="graph">
               <img src="https://brouillon.llanddev.org/img/fwi_structure.gif" />
             </div>
-            <p><FormattedMessage id="fcm2" /></p>
+            <p>
+              <FormattedMessage id="fcm2" />
+            </p>
           </div>
         ),
       });
       appActive = "one_day_forecast";
     } else if (active == 2) {
-      second = <span><FormattedMessage id="active_fire" /></span>;
+      second = (
+        <span>
+          <FormattedMessage id="active_fire" />
+        </span>
+      );
       this.setState({
         appTitle: <FormattedMessage id="active_fire" />,
         description: (
           <div className="desc">
-            <p><FormattedMessage id="afdesc" /></p>
+            <p>
+              <FormattedMessage id="afdesc" />
+            </p>
             <ul>
-              <li><FormattedMessage id="afli1" /></li>
-              <li><FormattedMessage id="afli2" /></li>
+              <li>
+                <FormattedMessage id="afli1" />
+              </li>
+              <li>
+                <FormattedMessage id="afli2" />
+              </li>
             </ul>
-            <h3><FormattedMessage id="modis.title" /></h3>
-            <p><FormattedMessage id="modis.p1" /></p>
-            <p><FormattedMessage id="modis.p2" /></p>
-            <p><FormattedMessage id="modis.p3" /> <a href="https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms/c6-mcd14dl">https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms/c6-mcd14dl</a></p>
-            <h3><FormattedMessage id="viirs.title" /></h3>
-            <p><FormattedMessage id="viirs.p1" /></p>
-            <p><FormattedMessage id="viirs.p2" /></p>
-            <p><FormattedMessage id="viirs.p3" /> <a href="https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms/viirs-i-band-active-fire-data">https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms/viirs-i-band-active-fire-data</a></p>
+            <h3>
+              <FormattedMessage id="modis.title" />
+            </h3>
+            <p>
+              <FormattedMessage id="modis.p1" />
+            </p>
+            <p>
+              <FormattedMessage id="modis.p2" />
+            </p>
+            <p>
+              <FormattedMessage id="modis.p3" />{" "}
+              <a href="https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms/c6-mcd14dl">
+                https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms/c6-mcd14dl
+              </a>
+            </p>
+            <h3>
+              <FormattedMessage id="viirs.title" />
+            </h3>
+            <p>
+              <FormattedMessage id="viirs.p1" />
+            </p>
+            <p>
+              <FormattedMessage id="viirs.p2" />
+            </p>
+            <p>
+              <FormattedMessage id="viirs.p3" />{" "}
+              <a href="https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms/viirs-i-band-active-fire-data">
+                https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms/viirs-i-band-active-fire-data
+              </a>
+            </p>
           </div>
         ),
       });
       appActive = "active_fire_data";
     } else if (active == 3) {
-      third = <span><FormattedMessage id="monthba" /></span>;
+      third = (
+        <span>
+          <FormattedMessage id="monthba" />
+        </span>
+      );
       this.setState({
         appTitle: <FormattedMessage id="monthba" />,
         description: (
           <div className="desc">
-            <h3><FormattedMessage id="methodology" /></h3>
+            <h3>
+              <FormattedMessage id="methodology" />
+            </h3>
             <p>
               <FormattedMessage id="meth1" />
             </p>
@@ -104,33 +148,65 @@ class CarteContainer extends Component {
               <img src="https://brouillon.llanddev.org/img/bais2.png" />
             </div>
 
-            <p><FormattedMessage id="meth1l1" /></p>
-            <p><FormattedMessage id="meth1l2" /></p>
-            <p><FormattedMessage id="meth1l3" /></p>
-            <p><FormattedMessage id="meth1l4" /></p>
-            <p><FormattedMessage id="meth1l5" /></p>
-            <p><FormattedMessage id="meth1l6" /></p>
-            <p><FormattedMessage id="meth1l7" /></p>
-            <p><FormattedMessage id="meth1l8" /></p>
+            <p>
+              <FormattedMessage id="meth1l1" />
+            </p>
+            <p>
+              <FormattedMessage id="meth1l2" />
+            </p>
+            <p>
+              <FormattedMessage id="meth1l3" />
+            </p>
+            <p>
+              <FormattedMessage id="meth1l4" />
+            </p>
+            <p>
+              <FormattedMessage id="meth1l5" />
+            </p>
+            <p>
+              <FormattedMessage id="meth1l6" />
+            </p>
+            <p>
+              <FormattedMessage id="meth1l7" />
+            </p>
+            <p>
+              <FormattedMessage id="meth1l8" />
+            </p>
 
-            <h3><FormattedMessage id="def" /></h3>
+            <h3>
+              <FormattedMessage id="def" />
+            </h3>
             <ul>
-              <li><FormattedMessage id="def1" /></li>
-              <li><FormattedMessage id="def2" /></li>
-              <li><FormattedMessage id="def3" /></li>
-              <li><FormattedMessage id="def4" /></li>
+              <li>
+                <FormattedMessage id="def1" />
+              </li>
+              <li>
+                <FormattedMessage id="def2" />
+              </li>
+              <li>
+                <FormattedMessage id="def3" />
+              </li>
+              <li>
+                <FormattedMessage id="def4" />
+              </li>
             </ul>
           </div>
         ),
       });
       appActive = "mburned_area";
     } else if (active == 4) {
-      fourth = <span><FormattedMessage id="annualba" /></span>;
+      fourth = (
+        <span>
+          <FormattedMessage id="annualba" />
+        </span>
+      );
       this.setState({
         appTitle: <FormattedMessage id="annualba" />,
         description: (
           <div className="desc">
-            <h3><FormattedMessage id="methodology" /></h3>
+            <h3>
+              <FormattedMessage id="methodology" />
+            </h3>
             <p>
               <FormattedMessage id="meth1" />
             </p>
@@ -140,21 +216,47 @@ class CarteContainer extends Component {
               <img src="https://brouillon.llanddev.org/img/bais2.png" />
             </div>
 
-            <p><FormattedMessage id="meth1l1" /></p>
-            <p><FormattedMessage id="meth1l2" /></p>
-            <p><FormattedMessage id="meth1l3" /></p>
-            <p><FormattedMessage id="meth1l4" /></p>
-            <p><FormattedMessage id="meth1l5" /></p>
-            <p><FormattedMessage id="meth1l6" /></p>
-            <p><FormattedMessage id="meth1l7" /></p>
-            <p><FormattedMessage id="meth1l8" /></p>
+            <p>
+              <FormattedMessage id="meth1l1" />
+            </p>
+            <p>
+              <FormattedMessage id="meth1l2" />
+            </p>
+            <p>
+              <FormattedMessage id="meth1l3" />
+            </p>
+            <p>
+              <FormattedMessage id="meth1l4" />
+            </p>
+            <p>
+              <FormattedMessage id="meth1l5" />
+            </p>
+            <p>
+              <FormattedMessage id="meth1l6" />
+            </p>
+            <p>
+              <FormattedMessage id="meth1l7" />
+            </p>
+            <p>
+              <FormattedMessage id="meth1l8" />
+            </p>
 
-            <h3><FormattedMessage id="def" /></h3>
+            <h3>
+              <FormattedMessage id="def" />
+            </h3>
             <ul>
-              <li><FormattedMessage id="def1" /></li>
-              <li><FormattedMessage id="def2" /></li>
-              <li><FormattedMessage id="def3" /></li>
-              <li><FormattedMessage id="def4" /></li>
+              <li>
+                <FormattedMessage id="def1" />
+              </li>
+              <li>
+                <FormattedMessage id="def2" />
+              </li>
+              <li>
+                <FormattedMessage id="def3" />
+              </li>
+              <li>
+                <FormattedMessage id="def4" />
+              </li>
             </ul>
           </div>
         ),
@@ -162,28 +264,41 @@ class CarteContainer extends Component {
       appActive = "aburned_area";
     }
     if (region == 1) {
-      rfirst = <span><FormattedMessage id="madagascar" /></span>;
+      rfirst = (
+        <span>
+          <FormattedMessage id="madagascar" />
+        </span>
+      );
       this.setState({
         appRegion: "Madagascar",
         center: [-18.91368, 47.53613],
         zoom: 6,
       });
-      this.setState({regionActive : "madagascar"});
+      this.setState({ regionActive: "madagascar" });
     } else if (region == 2) {
-      rsecond = <span><FormattedMessage id="ae" /></span>;
+      rsecond = (
+        <span>
+          <FormattedMessage id="ae" />
+        </span>
+      );
       this.setState({
         appRegion: "East-Africa",
         center: [-6.82349, 39.26951],
         zoom: 5,
       });
-      this.setState({regionActive : "ea"});
+      this.setState({ regionActive: "ea" });
     }
+
+    // state.regionActive doesn't work the way I want it so
+    const currentRegion = region === "2" ? "ea" : "madagascar";
+    // alert(region);
+    // alert(currentRegion);
 
     if (first == null)
       first = (
         <Link
           className="btn btn-primary"
-          to={"/one_day_forecast_" + this.state.regionActive}
+          to={"/one_day_forecast_" + currentRegion}
         >
           <FormattedMessage id="forecast" />
         </Link>
@@ -192,20 +307,26 @@ class CarteContainer extends Component {
       second = (
         <Link
           className="btn btn-primary"
-          to={"/active_fire_data_" + this.state.regionActive}
+          to={"/active_fire_data_" + currentRegion}
         >
           <FormattedMessage id="active_fire" />
         </Link>
       );
     if (third == null)
       third = (
-        <Link className="btn btn-primary" to={"/mburned_area_" + this.state.regionActive}>
+        <Link
+          className="btn btn-primary"
+          to={"/mburned_area_" + currentRegion}
+        >
           <FormattedMessage id="monthba" />
         </Link>
       );
     if (fourth == null)
       fourth = (
-        <Link className="btn btn-primary" to={"/aburned_area_" + this.state.regionActive}>
+        <Link
+          className="btn btn-primary"
+          to={"/aburned_area_" + currentRegion}
+        >
           <FormattedMessage id="annualba" />
         </Link>
       );
@@ -224,19 +345,18 @@ class CarteContainer extends Component {
 
     this.setState({
       headerLink: (
-        <div className="centered p">
+        <div id="header_link" className="centered p">
           {first} &nbsp;| &nbsp; {second} &nbsp;| &nbsp; {third}&nbsp; | &nbsp;{" "}
           {fourth}
         </div>
       ),
       regionLink: (
-        <div className="centered p">
+        <div id="region_link" className="centered p">
           {rfirst} &nbsp;| &nbsp; {rsecond}
         </div>
       ),
     });
   }
-
 
   render() {
     const histories = [
@@ -257,7 +377,7 @@ class CarteContainer extends Component {
     return (
       <div className="entry-content-wrapper clearfix standard-content">
         <header className="entry-content-header">
-          <h1 className="post-title entry-title">
+          <h1 className="post-title entry-title custom-title">
             <a
               rel="bookmark"
               title="Permanent Link: Global Fire Early Warning System"
@@ -270,21 +390,29 @@ class CarteContainer extends Component {
             <div className="pf-content">
               {this.state.headerLink}
 
-              <h3 className="centered">
+              <h3 id="app_title" className="centered">
                 <strong>{this.state.appTitle}</strong>
               </h3>
               <div className="centered p">{this.state.regionLink}</div>
 
-              <div className="centered p">
+              <div id="caution" className="centered p">
                 <strong>
                   <span>
-                  <FormattedMessage id="nb" />{" "}
-                  <a id="mailto" href="mailto:fire.medd@environnement.mg?cc=lab_llanddev@moov.mg">fire.medd@environnement.mg</a>, cc: "lab_llanddev@moov.mg"
+                    <FormattedMessage id="nb" />{" "}
+                    <a
+                      id="mailto"
+                      href="mailto:fire.medd@environnement.mg?cc=lab_llanddev@moov.mg"
+                    >
+                      fire.medd@environnement.mg
+                    </a>
+                    , cc: "lab_llanddev@moov.mg"
                   </span>
                 </strong>
               </div>
 
-              <h2 className="centered">{this.state.appRegion}</h2>
+              <h2 id="app_region" className="centered">
+                {this.state.appRegion}
+              </h2>
               <div>
                 <Carte
                   regionJson={this.props.regionJson}

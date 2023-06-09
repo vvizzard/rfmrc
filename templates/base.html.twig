@@ -9,6 +9,8 @@
 		        <link rel="stylesheet" href="{{ asset('assets/styles/style.css') }}">
 		        <link rel="stylesheet" href="{{ asset('assets/styles/enfold.css') }}"><!-- couleur -->
 		        <link rel="stylesheet" href="{{ asset('assets/styles/custom.css') }}"> #}
+		{# <link rel="stylesheet" href="{{ asset('assets/styles/custom.css') }}"> #}
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>
 			{% block title %}GEARFMRC
 			{% endblock %}
@@ -20,157 +22,6 @@
 			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
 	</head>
-	<style type="text/css">
-		.logo img {
-			max-height: 65px;
-			margin: 1em 0;
-		}
-		.transect p {
-			color: white;
-		}
-		.trad {
-			padding: 0.25em;
-			right: 4em;
-			position: absolute;
-			height: 2em;
-			z-index: 9999;
-		}
-		.condition-container {
-			height: 100%;
-			position: fixed;
-			z-index: 999;
-			left: 0;
-			right: 0;
-			background-color: #000000e0;
-		}
-		#condition {
-			/*padding: 2em;*/
-			max-width: 760px;
-			margin: 5em auto;
-			background-color: white;
-			z-index: 9999;
-		}
-		#condition .header {
-			padding: 2em;
-			background: #886254;
-			color: white;
-			font-size: 1.25em;
-		}
-		#condition .body {
-			padding: 2em;
-			height: 70vh;
-			overflow: auto;
-		}
-		#condition .footer {
-			padding: 2em;
-			border-top: solid 1px lightgray;
-			text-align: right;
-		}
-		#condition .footer button {
-			padding: 0.75em;
-			margin: auto 0.25em;
-			color: white;
-			font-weight: 600;
-		}
-		#condition .footer .agree {
-			background: #4caf50;
-			border: #00800066 solid 1px;
-		}
-		#condition .footer .agree:hover {
-			background: #3a843d;
-		}
-		#condition .footer .refuse {
-			background: #d40e00;
-			border: #f44336c2 solid 1px;
-		}
-		#condition .footer .refuse:hover {
-			background: #9e0c01;
-		}
-		.hidden {
-			display: none;
-		}
-		.avia-menu-text {
-			font-size: 90%;
-		}
-
-		.logo img {
-			max-height: 65px;
-			margin: 1.25em 0 !important;
-			width: 75%;
-		}
-
-		#logo2 {
-			left: 205px !important;
-		}
-
-		@media screen and (max-width: 1400px) and (min-width:990px) {
-			.avia-menu-text {
-				font-size: 70%;
-				padding-left: 6px!important;
-				margin-left: -6px!important;
-			}
-
-			.av-main-nav > li > a {
-				padding: 0px 6px;
-			}
-
-			.logo img {
-				max-height: 65px;
-				margin: 2em 0 !important;
-				width: 50%;
-			}
-
-			#logo2 {
-				left: 130px !important;
-			}
-		}
-
-		@media screen and (max-width: 1300px) and (min-width:1100px) {
-			.avia-menu-text {
-				font-size: 75%;
-				padding-left: 6px!important;
-				margin-left: -6px!important;
-			}
-
-			.av-main-nav > li > a {
-				padding: 0px 6px;
-			}
-
-			.logo img {
-				margin: 1.5em 0 !important;
-				width: 60%;
-			}
-
-			#logo2 {
-				left: 165px !important;
-			}
-		}
-
-		@media screen and (max-width: 1400px) and (min-width:1301px) {
-			.avia-menu-text {
-				font-size: 90%;
-				padding-left: 6px!important;
-				margin-left: -6px!important;
-			}
-
-			.av-main-nav > li > a {
-				padding: 0px 6px;
-			}
-
-			.logo img {
-				margin: 1.5em 0 !important;
-				width: 70%;
-			}
-
-			#logo2 {
-				left: 200px !important;
-			}
-		}
-
-		.entry-content-header h1, .entry-content-header .centered{
-			text-align: center!important;
-		}
-	</style>
 
 	<script type="text/javascript">
 		function setCookie(cname, cvalue, exdays) {
@@ -214,7 +65,46 @@
 		<!-- Header -->
 		{% if app.request.get('lang') == 'en' %}
 		<header id="header" class="all_colors header_color light_bg_color  av_header_top av_logo_left av_main_nav_header av_menu_right av_slim av_header_sticky_disabled av_header_shrinking_disabled av_header_stretch_disabled av_mobile_menu_tablet av_header_searchicon av_header_unstick_top_disabled av_seperator_small_border av_bottom_nav_disabled ">
+			<div id="mobile_header" style="display:none;">
+				<nav role="navigation">
+					<div id="menuToggle">
+						<input type="checkbox" />
+							<span></span>
+							<span></span>
+							<span></span>
 
+							<ul id="menu">
+								<li><b>Madagascar</b></li>
+								<li><a href="/one_day_forecast_madagascar?lang=en">1 Day Fire Danger Forecast</a></li>
+								<li><a href="/active_fire_data_madagascar?lang=en">Active Fire Data</a></li>
+								<li><a href="/mburned_area_madagascar?lang=en">Monthly Burned Area Monitoring</a></li>
+								<li><a href="/aburned_area_madagascar?lang=en">Annually Burned Area Monitoring</a></li>
+								<hr>
+								<li><b>East-Africa</b></li>
+								<li><a href="/one_day_forecast_ea?lang=en">1 Day Fire Danger Forecast</a></li>
+								<li><a href="/active_fire_data_ea?lang=en">Active Fire Data</a></li>
+								<li><a href="/mburned_area_ea?lang=en">Monthly Burned Area Monitoring</a></li>
+								<li><a href="/aburned_area_ea?lang=en">Annually Burned Area Monitoring</a></li>
+							</ul>
+					</div>
+				</nav>
+				<div class="logo-groupe">
+					<span class="">
+						<a href="https://gfmc.online/">
+							<img height="50" width="150" src="https://gfmc.online/wp-content/uploads/gfmc_logo_2020_2.png" alt="GFMC">
+						</a>
+					</span>
+					<span id="logo2" class="">
+						<a href="http://www.rfmrc-ea.org">
+							<img height="50" width="150" src="https://www.rfmrc-ea.org/img/logo_reafmrc.jpg" alt="GFMC">
+						</a>
+					</span>
+				</div>
+					
+				<div class="trad"><a href="{{ app.request.pathinfo }}?lang=mg">Mg</a> | 
+					<a href="{{ app.request.pathinfo }}?lang=fr">Fr</a> | En
+				</div>
+			</div>
 			<div id="header_main" class="container_wrap container_wrap_logo">
 
 				<div class="trad"><a href="{{ app.request.pathinfo }}?lang=mg">Mg</a> | 
@@ -225,16 +115,18 @@
 					class="container av-logo-container">
 					<!-- <div class="inner-container"> -->
 					<div class="">
-						<span class="logo">
-							<a href="https://gfmc.online/">
-								<img height="50" width="150" src="https://gfmc.online/wp-content/uploads/gfmc_logo_2020_2.png" alt="GFMC">
-							</a>
-						</span>
-						<span id="logo2" class="logo" style="left:265px;">
-							<a href="http://www.rfmrc-ea.org">
-	        					<img height="50" width="150" src="https://www.rfmrc-ea.org/img/logo_reafmrc.jpg" alt="GFMC">
-							</a>
-						</span>
+						<div class="logo-groupe">
+							<span class="logo">
+								<a href="https://gfmc.online/">
+									<img height="50" width="150" src="https://gfmc.online/wp-content/uploads/gfmc_logo_2020_2.png" alt="GFMC">
+								</a>
+							</span>
+							<span id="logo2" class="logo" style="left:265px;">
+								<a href="http://www.rfmrc-ea.org">
+									<img height="50" width="150" src="https://www.rfmrc-ea.org/img/logo_reafmrc.jpg" alt="GFMC">
+								</a>
+							</span>
+						</div>
 						<nav class="main_menu" data-selectname="Select a page">
 							<div class="avia-menu av-main-nav-wrap">
 								<ul id="avia-menu" class="menu av-main-nav">
@@ -635,7 +527,46 @@
 			}
 		</style>
 		<header id="header" class="all_colors header_color light_bg_color  av_header_top av_logo_left av_main_nav_header av_menu_right av_slim av_header_sticky_disabled av_header_shrinking_disabled av_header_stretch_disabled av_mobile_menu_tablet av_header_searchicon av_header_unstick_top_disabled av_seperator_small_border av_bottom_nav_disabled ">
+			<div id="mobile_header" style="display:none;">
+				<nav role="navigation">
+					<div id="menuToggle">
+						<input type="checkbox" />
+							<span></span>
+							<span></span>
+							<span></span>
 
+							<ul id="menu">
+								<li><b>Madagasikara</b></li>
+								<li><a href="/one_day_forecast_madagascar?lang=mg">Vinavina isan’andro mikasika ny toetry ny afo</a></li>
+								<li><a href="/active_fire_data_madagascar?lang=mg">Angondrakitra mikasika ireo afo mirehitra</a></li>
+								<li><a href="/mburned_area_madagascar?lang=mg">Fanaraha-maso isam-bolana ireo faritra may</a></li>
+								<li><a href="/aburned_area_madagascar?lang=mg">Fanaraha-maso isan-taona ireo faritra may</a></li>
+								<hr>
+								<li><b>Afrika Atsinanana</b></li>
+								<li><a href="/one_day_forecast_ea?lang=mg">Vinavina isan’andro mikasika ny toetry ny afo</a></li>
+								<li><a href="/active_fire_data_ea?lang=mg">Angondrakitra mikasika ireo afo mirehitra</a></li>
+								<li><a href="/mburned_area_ea?lang=mg">Fanaraha-maso isam-bolana ireo faritra may</a></li>
+								<li><a href="/aburned_area_ea?lang=mg">Fanaraha-maso isan-taona ireo faritra may</a></li>
+							</ul>
+					</div>
+				</nav>
+				<div class="logo-groupe">
+					<span class="">
+						<a href="https://gfmc.online/">
+							<img height="50" width="150" src="https://gfmc.online/wp-content/uploads/gfmc_logo_2020_2.png" alt="GFMC">
+						</a>
+					</span>
+					<span id="logo2" class="">
+						<a href="http://www.rfmrc-ea.org">
+							<img height="50" width="150" src="https://www.rfmrc-ea.org/img/logo_reafmrc.jpg" alt="GFMC">
+						</a>
+					</span>
+				</div>
+					
+				<div class="trad">Mg | 
+					<a href="{{ app.request.pathinfo }}?lang=fr">Fr</a> | <a href="{{ app.request.pathinfo }}?lang=en">En</a>
+				</div>
+			</div>
 			<div id="header_main" class="container_wrap container_wrap_logo">
 
 				<div class="trad">Mg | 
@@ -646,16 +577,18 @@
 					class="container av-logo-container">
 					<!-- <div class="inner-container"> -->
 					<div class="">
-						<span class="logo">
-							<a href="https://gfmc.online/">
-								<img height="50" width="150" src="https://gfmc.online/wp-content/uploads/gfmc_logo_2020_2.png" alt="GFMC">
-							</a>
-						</span>
-						<span id="logo2" class="logo" style="left:265px;">
-							<a href="http://www.rfmrc-ea.org">
-	        					<img height="50" width="150" src="https://www.rfmrc-ea.org/img/logo_reafmrc.jpg" alt="GFMC">
-							</a>
-						</span>
+						<div class="logo-groupe">
+							<span class="logo">
+								<a href="https://gfmc.online/">
+									<img height="50" width="150" src="https://gfmc.online/wp-content/uploads/gfmc_logo_2020_2.png" alt="GFMC">
+								</a>
+							</span>
+							<span id="logo2" class="logo" style="left:265px;">
+								<a href="http://www.rfmrc-ea.org">
+									<img height="50" width="150" src="https://www.rfmrc-ea.org/img/logo_reafmrc.jpg" alt="GFMC">
+								</a>
+							</span>
+						</div>
 						<nav class="main_menu" data-selectname="Select a page">
 							<div class="avia-menu av-main-nav-wrap">
 								<ul id="avia-menu" class="menu av-main-nav">
@@ -1220,22 +1153,62 @@
 			id="header"
 			class="all_colors header_color light_bg_color av_header_top av_logo_left av_main_nav_header av_menu_right av_slim av_header_sticky_disabled av_header_shrinking_disabled av_header_stretch_disabled av_mobile_menu_tablet av_header_searchicon av_header_unstick_top_disabled av_seperator_small_border av_bottom_nav_disabled"
 		>
+		<div id="mobile_header" style="display:none;">
+			<nav role="navigation">
+				<div id="menuToggle">
+					<input type="checkbox" />
+						<span></span>
+						<span></span>
+						<span></span>
+
+						<ul id="menu">
+							<li><b>Madagascar</b></li>
+							<li><a href="/one_day_forecast_madagascar">Prévision journalière des feux</a></li>
+							<li><a href="/active_fire_data_madagascar">Données sur les feux actifs</a></li>
+							<li><a href="/mburned_area_madagascar">Suivi des superficies brûlées mensuellement</a></li>
+							<li><a href="/aburned_area_madagascar">Suivi des superficies brûlées annuellement</a></li>
+							<hr>
+							<li><b>Afrique de l'Est</b></li>
+							<li><a href="/one_day_forecast_ea">Prévision journalière des feux</a></li>
+							<li><a href="/active_fire_data_ea">Données sur les feux actifs</a></li>
+							<li><a href="/mburned_area_ea">Suivi des superficies brûlées mensuellement</a></li>
+							<li><a href="/aburned_area_ea">Suivi des superficies brûlées annuellement</a></li>
+						</ul>
+				</div>
+			</nav>
+			<div class="logo-groupe">
+				<span class="">
+					<a href="https://gfmc.online/">
+						<img height="50" width="150" src="https://gfmc.online/wp-content/uploads/gfmc_logo_2020_2.png" alt="GFMC">
+					</a>
+				</span>
+				<span id="logo2" class="">
+					<a href="http://www.rfmrc-ea.org">
+						<img height="50" width="150" src="https://www.rfmrc-ea.org/img/logo_reafmrc.jpg" alt="GFMC">
+					</a>
+				</span>
+			</div>
+				
+			<div class="trad"><a href="{{ app.request.pathinfo }}?lang=mg">Mg</a> | Fr | <a href="{{ app.request.pathinfo }}?lang=en">En</a></div>
+		</div>
 		<div id="header_main" class="container_wrap container_wrap_logo">
 			<div class="trad"><a href="{{ app.request.pathinfo }}?lang=mg">Mg</a> | Fr | <a href="{{ app.request.pathinfo }}?lang=en">En</a></div>
 
 			<div class="container av-logo-container">
 			<!-- <div class="inner-container"> -->
 			<div class="">
-				<span class="logo">
-							<a href="https://gfmc.online/">
-								<img height="50" width="150" src="https://gfmc.online/wp-content/uploads/gfmc_logo_2020_2.png" alt="GFMC">
-							</a>
-						</span>
-						<span id="logo2" class="logo" style="left:265px;">
-							<a href="http://www.rfmrc-ea.org">
-	        					<img height="50" width="150" src="https://www.rfmrc-ea.org/img/logo_reafmrc.jpg" alt="GFMC">
-							</a>
-						</span>
+				<div class="logo-groupe">
+							<span class="logo">
+								<a href="https://gfmc.online/">
+									<img height="50" width="150" src="https://gfmc.online/wp-content/uploads/gfmc_logo_2020_2.png" alt="GFMC">
+								</a>
+							</span>
+							<span id="logo2" class="logo" style="left:265px;">
+								<a href="http://www.rfmrc-ea.org">
+									<img height="50" width="150" src="https://www.rfmrc-ea.org/img/logo_reafmrc.jpg" alt="GFMC">
+								</a>
+							</span>
+						</div>
 				<nav class="main_menu" data-selectname="Select a page">
 				<div class="avia-menu av-main-nav-wrap">
 					<ul id="avia-menu" class="menu av-main-nav">
@@ -1914,7 +1887,7 @@
 
 			<div class="main_color container_wrap_first container_wrap sidebar_right">
 				<div class="container">
-					<main class="template-page alpha units" style="padding-top: 50px; padding-bottom: 5px;">
+					<main class="template-page alpha units no-pt-mobile" style="padding-top: 50px; padding-bottom: 5px;">
 						<div class="post-entry post-entry-type-page post-entry-28">
 							<div class="entry-content-wrapper clearfix">
 								<div class="pf-content">
