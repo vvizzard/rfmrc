@@ -67,19 +67,19 @@ class Carte extends Component {
         "Zimbabwe",
       ],
       paysAfriqueTemp: [
-        // "Burundi",
+        "Burundi",
         "Djibouti",
         "Erythree",
         "Ethiopie",
-        // "Kenya",
-        // "Malawi",
-        // "Mozambique",
-        // "Ouganda",
-        // "Rwanda",
-        // "Somalie",
-        // "Tanzanie",
-        // "Zambie",
-        // "Zimbabwe",
+        "Kenya",
+        "Malawi",
+        "Mozambique",
+        "Ouganda",
+        "Rwanda",
+        "Somalie",
+        "Tanzanie",
+        "Zambie",
+        "Zimbabwe",
       ],
       selectedAfricanPays: null,
       currentMbtiles: null,
@@ -212,15 +212,18 @@ class Carte extends Component {
     var type = this.mapTypeRef.current.value;
     console.log(type);
     if (!date) date = "2020-01-01";
+    /*https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/6f3faf8f8df48244229ac8fea314435b/?REQUEST=GetMap&layers=fires_modis&TIME=2021-01-01/2021-01-10&WIDTH=1024&HEIGHT=512&BBOX=3974725.4702758794,-3147982.5724584963,6606605.2278247075,-1142274.9505346683&SRS=EPSG:3857
+    https://firms2.modaps.eosdis.nasa.gov/wms/key/e3d03a47a3a71938a8c82e4b13aadad7/?REQUEST=GetMap&layers=fires_modis&TIME=2020-01-01/2020-01-01&WIDTH=1024&HEIGHT=512&BBOX=3974725.4702758794,-3147982.5724584963,6606605.2278247075,-1142274.9505346683&SRS=EPSG:3857*/
     const imageLink =
-      "https://firms2.modaps.eosdis.nasa.gov/wms/key/e3d03a47a3a71938a8c82e4b13aadad7/?REQUEST=GetMap" +
+      // "https://firms2.modaps.eosdis.nasa.gov/wms/key/e3d03a47a3a71938a8c82e4b13aadad7/?REQUEST=GetMap" +
+      "https://firms.modaps.eosdis.nasa.gov/mapserver/wms/fires/6f3faf8f8df48244229ac8fea314435b/?REQUEST=GetMap" +
       "&layers=" +
       type +
       "&TIME=" +
       date +
       "/" +
       date +
-      "&WIDTH=1024&HEIGHT=512&BBOX=" +
+      "&WIDTH=4096&HEIGHT=2048&BBOX=" +
       this.convertCoordinateLong(bonds._southWest.lng) +
       "," +
       this.convertCoordinateLat(bonds._southWest.lat) +
